@@ -1,0 +1,13 @@
+.cart-icon{
+   position: fixed;
+   z-index: 1000;
+}
+.cart-scroll{
+   top: 35px;
+   right: 40px;
+}
+
+.cart-not-scrolled{
+    top: 40px;
+    right: 40px;
+}

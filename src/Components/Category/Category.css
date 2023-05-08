@@ -1,0 +1,14 @@
+.nav-menu {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.nav-menu a{
+    transition: all ease-in-out 200ms;
+}
+.short-logo {
+  margin-top: -10px;
+}
+
+
+
