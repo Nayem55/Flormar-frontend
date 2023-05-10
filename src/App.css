@@ -1,4 +1,5 @@
 html{
-  background: white;
   color: black !important;
+  font-family: muli,sans-serif;
+  letter-spacing: -0.5px;
 }

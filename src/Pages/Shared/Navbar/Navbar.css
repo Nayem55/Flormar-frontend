@@ -1,9 +1,15 @@
 .cart-icon{
    position: fixed;
    z-index: 1000;
+   transition: right 1000ms ease-in-out;
+
 }
-.cart-scroll{
-   top: 35px;
+.cart-scrolled-50{
+   top: 15px;
+   right: -4000px;
+}
+.cart-scrolled-80{
+   top: 15px;
    right: 40px;
 }
 

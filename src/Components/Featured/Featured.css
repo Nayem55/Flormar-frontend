@@ -1,44 +1,45 @@
-
-.featured .swiper {
+.featured {
+  margin-top: 100px;
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
-.featured .swiper-slide {
+.featured div {
   background-position: center;
   background-size: cover;
-  width: 600px;
-  height: 300px;
+  width: 100%;
+  height: 200px;
   overflow: hidden;
-   cursor: pointer;
-   position: relative;
-  }
-  
-  
-  .featured .swiper-slide::after{
-    content: '';
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top:0;
-    opacity: 0;
-    display: flex;
-    transition: opacity 400ms ease-in-out;
+  position: relative;
 }
 
-.featured .swiper-slide:hover::after{
+.featured div::after {
+  content: "";
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  display: flex;
+  transition: opacity 400ms ease-in-out;
+}
+
+.featured div:hover::after {
   opacity: 0.3;
+  color: #ff81a9;
 }
 
-.featured .swiper-slide img {
+.featured  img {
   display: block;
   width: 100%;
-  height: 300px;
+  height: 200px;
   transition: scale 400ms ease-in-out;
 }
-.featured .swiper-slide:hover img{
+.featured div:hover img{
   scale: 1.1;
 }
-

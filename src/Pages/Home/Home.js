@@ -1,26 +1,29 @@
 
 import './Home.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faTruck, faStar, faCartShopping, faBurst} from '@fortawesome/free-solid-svg-icons'
 import Banner from '../../Components/Banner/Banner';
 import Featured from '../../Components/Featured/Featured';
+import NewArrivals from '../../Components/NewArrivals/NewArrivals';
+import FeaturedCollection from '../../Components/FeaturedCollection/FeaturedCollection';
+import About from '../../Components/About/About';
+import SpecialProducts from '../../Components/SpecialProducts/SpecialProducts';
+import HomeBrands from '../../Components/HomeBrands/HomeBrands'
+
 
 const Home = () => {
     return (
         <div className='home'>
-            <div className='flex justify-center py-6'>
-                <p className='font-bold mr-12'><FontAwesomeIcon icon={faBurst}></FontAwesomeIcon> EXCLUSIVE IMPORTER </p>
-                <p className='font-bold mr-12'><FontAwesomeIcon icon={faTruck}></FontAwesomeIcon> SHIPPING ACCROSS BANGLADESH </p>
-                <p className='font-bold mr-12'><FontAwesomeIcon icon={faStar}></FontAwesomeIcon> GENUINE PRODUCT GUARANTEE </p>
-                <p className='font-bold mr-12'><FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> FREE DELIVERY ABOVE 999 TK. </p>
-            </div>
             <div>
                 <Banner></Banner>
             </div>
-            {/* Featured category */}
-            <div>
+            <div className='2xl:w-[65%] md:w-[75%] mx-auto'>
                 <Featured></Featured>
+                <NewArrivals></NewArrivals>
+                <FeaturedCollection></FeaturedCollection>
+                <SpecialProducts/>
+                <HomeBrands/>
+                <About></About>
             </div>
+  
         </div>
     );
 };
