@@ -1,8 +1,12 @@
 import useProduct from "../../Hooks/useProduct";
 import Product from "../Shared/Product";
+import { ThemeContext } from "../../Contexts/ThemeContext";
+import { useContext } from "react";
+
 
 const FeaturedCollection = () => {
-    const [products] = useProduct()
+    const { products } = useContext(ThemeContext);
+
     const featureCollection = products?.filter(product=>product.category.toLowerCase()==="perfume").slice(42,52)
     return (
         <div className="">

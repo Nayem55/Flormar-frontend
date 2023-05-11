@@ -3,3 +3,13 @@ html{
   font-family: muli,sans-serif;
   letter-spacing: -0.5px;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]:focus {
+  outline: none;
+}

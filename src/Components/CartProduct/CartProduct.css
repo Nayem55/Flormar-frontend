@@ -1,0 +1,39 @@
+.cart-product-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.cart-img-container{
+    width: 20%;
+}
+.cart-product-details{
+    width: 80%;
+}
+
+.upArrow,.downArrow{
+    position: absolute;
+    right:0;
+    transition: opacity 200ms ease-in-out;
+}
+.upArrow:hover,.downArrow:hover{
+    color: #f34b7f;
+}
+
+.upArrow{
+    top:3px;
+    z-index: 10;
+    right: 5px;
+}
+.downArrow{
+    bottom: 3px;
+    right: 5px;
+}
+
+.quantity-input{
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+.upArrow:hover .quantity-input,.downArrow:hover .quantity-input,.quantity-input:hover {
+    border:1px solid #f34b7f;
+}

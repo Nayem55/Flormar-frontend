@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../../../Images/Flormar-Logo-Png-1.png";
@@ -8,11 +8,17 @@ import useScroll from "../../../Hooks/useScroll";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { signOut } from "firebase/auth";
+import { ThemeContext } from "../../../Contexts/ThemeContext";
 
 
 const Navbar = () => {
   const [scrollPosition]= useScroll();
   const [user] = useAuthState(auth)
+  const {cart} = useContext(ThemeContext)
+   let quantity = 0;
+   cart?.forEach(product => {
+    quantity = quantity + product?.quantity
+   });
 
   return (
     <div className="w-full z-10">
@@ -66,6 +72,7 @@ const Navbar = () => {
           <div className={` cart-icon  ${scrollPosition>10 ?'cart-scrolled-50': 'cart-not-scrolled'} ${scrollPosition>80 ?'cart-scrolled-80': 'cart-scrolled-50'} `}>
             <div className="indicator">
               {/* cart icon */ }
+              <Link to='/cart '>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`transition ease-in duration-200 ${scrollPosition>80 ?'text-primary h-6 w-6 cursor-pointer' : 'h-7 w-7 text-secondary cursor-pointer'}`}
@@ -80,8 +87,10 @@ const Navbar = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
+              </Link>
+             
               <span className={`badge  bg-accent text-primary font-bold border-none ${scrollPosition>80?'badge-sm text-xs pt-1':'badge-md text-lg pt-1'} badge-sm text-xs pt-1 indicator-item`}>
-                0
+                {quantity}
               </span>
             </div>
           </div>
