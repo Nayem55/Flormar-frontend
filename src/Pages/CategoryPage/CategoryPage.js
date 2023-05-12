@@ -19,10 +19,10 @@ const CategoryPage = () => {
             className="mx-2"
             icon={faCaretRight}
           ></FontAwesomeIcon>
-          {category.toUpperCase()}
+          {category?.toUpperCase()}
         </p>
       </div>
-      <h1 className={`${category.includes('top 10')?'text-center':''} font-bold my-10 text-[22px]`}>{category.toUpperCase()}</h1>
+      <h1 className={`${category?.includes('top 10')?'text-center':''} font-bold my-10 text-[22px]`}>{category?.toUpperCase()}</h1>
       <div className="flex} items-center mb-10">
         <button onClick={() => setList(false)}>
           

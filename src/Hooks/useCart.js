@@ -1,13 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
+import { getStoredCart } from "../utilities/CartDb";
 
-const useCart = () => {
-  const [cart, setCart] = useState();
-  useEffect(() => {
-    fetch("http://192.168.0.200:5000/cart")
-      .then((res) => res.json())
-      .then((data) => setCart(data));
-  }, []);
+const useCart = (products) => {
+   const [cart, setCart] = useState([]);
 
-  return [cart, setCart];
-};
-export default useCart;
+   useEffect(() => {
+      const storedCart = getStoredCart()
+      const savedCart = []
+      for (let id in storedCart) {
+         const addedProduct = products?.find(product => product._id == id)
+         if (addedProduct) {
+            addedProduct.quantity = storedCart[id]
+            savedCart.push(addedProduct)
+         }
+      }
+      setCart(savedCart)
+   }, [products])
+
+   return [cart, setCart]
+}
+
+export default useCart

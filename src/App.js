@@ -13,7 +13,8 @@ function App() {
   const [category, setCategory] = useState("");
   const [productType, setProductType] = useState("");
   const [brand, setBrand] = useState("");
-  const [cart, setCart] = useCart();
+  const [cart, setCart] = useCart(products);
+  const [searchText, setSearchText] = useState("");
   const [orderList] = useOrder();
 
   useEffect(() => {
@@ -74,11 +75,9 @@ function App() {
       categoryProducts = [...perfume, ...deodorant, ...mist];
     }
   } else if (category === "bestseller") {
-    categoryProducts = products
-      ?.filter(
-        (product) => product?.category.toLowerCase() === brand?.toLowerCase()
-      )
-      .slice(0, 10);
+    categoryProducts = products?.filter((product) => product?.category.toLowerCase() === brand?.toLowerCase()).slice(0, 10);
+  } else if (category === "searchProduct") {
+    categoryProducts = products?.filter((product) => product?.name.toLowerCase().includes(searchText.toLowerCase())) ;
   } else {
     categoryProducts = products?.filter(
       (product) => product?.category.toLowerCase() === category?.toLowerCase()
@@ -94,7 +93,9 @@ function App() {
         products,
         cart,
         setCart,
-        orderList
+        orderList,
+        searchText,
+        setSearchText
       }}
     >
       <RouterProvider router={router}></RouterProvider>

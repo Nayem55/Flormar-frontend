@@ -1,6 +1,5 @@
 import React, { useContext, useRef } from "react";
 import "./CartProduct.css";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrash,
@@ -8,50 +7,43 @@ import {
   faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { ThemeContext } from "../../Contexts/ThemeContext";
+import { getStoredCart, removeFromDb } from "../../utilities/CartDb";
 
 const CartProduct = ({ product }) => {
   const { cart, setCart } = useContext(ThemeContext);
   const quantityRef = useRef();
 
-  const handleUpdate = (product) => {
-    const quantity = parseInt(quantityRef.current.innerText);
-    product.quantity = quantity;
-    fetch("http://192.168.0.200:5000/cart", {
-      method: "put",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setCart(
-          cart.map((pd) => {
-            if (pd._id === product._id) {
-              pd.quantity = parseInt(quantityRef.current.innerText);
-              return pd;
-            } else return pd;
-          })
-        );
-      });
+  const handleUpdate = (id) => {
+
+   const storedCart = getStoredCart();
+   const quantity= parseInt(quantityRef.current.innerText);
+
+
+    if (storedCart[id]) {
+      storedCart[id] = quantity;
+    }
+
+    //!setting Cart Data to UI
+    setCart(
+      cart.map((pd) => {
+        if (pd._id === product._id) {
+          pd.quantity = quantity;
+          return pd;
+        } else return pd;
+      })
+    );
+
+    //?Setting Cart Data to Local Storage
+    localStorage.setItem("shopping-cart", JSON.stringify(storedCart));
   };
 
-  const handleDelete = (item) => {
-    fetch("http://192.168.0.200:5000/cart", {
-      method: "delete",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(item),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-      });
-    const rest = cart.filter((product) => product._id !== item._id);
+
+  const handleDelete = (id) => {
+    const rest = cart.filter((product) => product._id !== id);
     setCart(rest);
+    removeFromDb(id);
+    console.log(id);
   };
-
 
   return (
     <div className="flex items-center h-[200px]">
@@ -73,7 +65,10 @@ const CartProduct = ({ product }) => {
         <div className="flex gap-6 items-center">
           <div className="w-[70%] relative">
             <span
-              onClick={() => quantityRef.current.innerText = parseInt(quantityRef.current.innerText)+1}
+              onClick={() =>
+                (quantityRef.current.innerText =
+                  parseInt(quantityRef.current.innerText) + 1)
+              }
               className="cursor-pointer"
             >
               <FontAwesomeIcon
@@ -89,9 +84,10 @@ const CartProduct = ({ product }) => {
               {product.quantity}
             </div>
             <span
-              onClick={() =>{
-                if(parseInt(quantityRef.current.innerText)>1){
-                    quantityRef.current.innerText = parseInt(quantityRef.current.innerText)-1
+              onClick={() => {
+                if (parseInt(quantityRef.current.innerText) > 1) {
+                  quantityRef.current.innerText =
+                    parseInt(quantityRef.current.innerText) - 1;
                 }
               }}
               className="cursor-pointer"
@@ -103,24 +99,26 @@ const CartProduct = ({ product }) => {
             </span>
           </div>
 
-        <Link
-          onClick={() => {
-            handleDelete(product);
-            quantityRef.current.innerText = product.quantity
-          }}
-        >
-          <FontAwesomeIcon className="hover:text-accent" icon={faTrash}></FontAwesomeIcon>
-        </Link>
-        </div>
-          <Link
+          <button
             onClick={() => {
-              handleUpdate(product);
+              handleDelete(product._id);
+              quantityRef.current.innerText = product.quantity;
             }}
-            className="text-xs hover:text-accent font-bold mt-4"
           >
-            Update Cart
-          </Link>
-
+            <FontAwesomeIcon
+              className="hover:text-accent"
+              icon={faTrash}
+            ></FontAwesomeIcon>
+          </button>
+        </div>
+        <button
+          onClick={() => {
+            handleUpdate(product._id);
+          }}
+          className="text-xs flex justify-start hover:text-accent  font-bold mt-4"
+        >
+          Update Cart
+        </button>
       </div>
     </div>
   );

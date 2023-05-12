@@ -7,6 +7,8 @@ import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import CartPage from "../Pages/CartPage/CartPage";
 import Shipping from "../Pages/ShippingPage/Shipping";
 import PopCart from "../Components/PopCart/PopCart";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 
 
 
@@ -38,12 +40,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/shipping',
-                element:<Shipping></Shipping>
+                element:<PrivateRoute><Shipping></Shipping></PrivateRoute>
             },
             {
-                path: '/popCart',
-                element:<PopCart></PopCart>
+                path: '/product/:id',
+                element:<ProductDetails/>
             }
+
            
         ]
     },

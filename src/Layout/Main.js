@@ -1,18 +1,18 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer/Footer";
-import Navbar from "../Pages/Shared/Navbar/Navbar";
-import Category from "../Components/Category/Category";
+
 import Features from "../Components/Features";
+import Header from "../Components/Header/Header";
 
 
 
 const Main = () => {
 
+
   return (
     <div>
-      <Navbar></Navbar>
-      <Category></Category>
+      <Header></Header>
       <Features></Features>      
       <Outlet></Outlet>
       <Footer></Footer>

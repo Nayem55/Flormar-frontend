@@ -12,4 +12,32 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number]:focus {
   outline: none;
+
 }
+
+
+.pop-cart-products::-webkit-scrollbar,.searchedProducts::-webkit-scrollbar  {
+  width: 5px;
+  padding-left: 10px;
+  border-radius: 10px;
+
+}
+
+.pop-cart-products::-webkit-scrollbar-track,.searchedProducts::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(211, 211, 211, 0.726); 
+  border-radius: 10px;
+  cursor: grab;
+
+}
+
+.pop-cart-products::-webkit-scrollbar-thumb,.searchedProducts::-webkit-scrollbar-thumb {
+  background:rgba(169, 169, 169, 0.493);
+  border-radius: 20px;
+  height: 5px;
+
+}
+
+.pop-cart-products::-webkit-scrollbar-thumb:hover,.searchedProducts::-webkit-scrollbar-thumb:hover {
+  background:rgba(128, 128, 128, 0.603);
+}
+

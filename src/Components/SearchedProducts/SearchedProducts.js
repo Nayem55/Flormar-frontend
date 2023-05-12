@@ -1,0 +1,46 @@
+import React, { useContext } from "react";
+import "./SearchedProducts.css";
+import { Link, useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../Contexts/ThemeContext";
+
+const SearchedProducts = ({ searchedProducts, highPriorityProducts, focus }) => {
+  const navigate = useNavigate()
+  const {setCategory} = useContext(ThemeContext)
+
+  const searchedArray = highPriorityProducts? highPriorityProducts : SearchedProducts;
+
+  return (
+    <div className={`searchedProducts ${focus?"block":"hidden"}`}>
+      <p className="text-xs font-bold">POPULAR PRODUCTS</p>
+      <hr className="my-2"/>
+      <div className="searchedProduct">
+        {searchedArray.slice(0, 3)?.map((product) => (
+          <div onClick={()=>navigate(`/product/${product._id}`)} className="flex flex-col items-center">
+            <img src={product.img} alt="" />
+            <div className="searchedProductDetails">
+              <p title={product.name}>{product.name.length<40?product.name:product.name.slice(0,40)+"....."}</p>
+              <p className="text-accent font-bold">${product.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      {
+        searchedProducts.length>1&&
+        <div>
+        <hr className="my-2" />
+        <Link onClick={()=>{
+          setCategory('searchProduct')
+          localStorage.setItem('category','searchProduct')
+        }} to='/category/search results'>
+          <p className="text-center text-secondary text-opacity-50 mt-2 text-xs font-bold hover:text-accent pointer">
+            SEE ALL RESULTS ( {searchedProducts.length} )
+          </p>
+        </Link>
+      </div>
+      }
+      
+    </div>
+  );
+};
+
+export default SearchedProducts;

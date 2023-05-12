@@ -11,28 +11,34 @@ import DeoGroup from "../NavCategories/DeoGroup";
 import BathGroup from "../NavCategories/BathGroup";
 import BrandsGroup from "../NavCategories/BrandsGroup";
 import BestSeller from "../NavCategories/BestSeller";
+import PopCart from "../PopCart/PopCart";
 
-const Category = () => {
+const Category = ({ popCart,handlePopCart }) => {
   const [scrollPosition] = useScroll();
-  const { setCategory, setBrand ,setProductType } = useContext(ThemeContext);
 
+  const { setCategory, setBrand, setProductType } = useContext(ThemeContext);
   return (
     <div
-      className={`nav-menu transition-all ease-in-out duration-300 text-center  text-white  ${
+      className={`nav-menu relative transition-all ease-in-out duration-300 text-center  text-white  ${
         scrollPosition > 80 ? "nav-menu-scrolled" : "p-0"
       }`}
     >
+      <PopCart handlePopCart={handlePopCart} popCart={popCart}></PopCart>
 
       {/*----------- Nav Scrolled Logo  -----------------*/}
 
-      {scrollPosition > 80 ? 
-        <Link to='/'><img  className="ms-10 short-logo" src={logo} alt="" /></Link>:""}
+      {scrollPosition > 80 ? (
+        <Link>
+          <img className="ms-10 short-logo" src={logo} alt="" />
+        </Link>
+      ) : (
+        ""
+      )}
 
       {/*------------------------------------- All Navigation Category  ------------------------------------*/}
 
       <div className="all-menu">
-
-        <PerfumeGroup/>
+        <PerfumeGroup />
 
         {/*------------------ Mist Category  ----------------*/}
         <Link
@@ -41,14 +47,15 @@ const Category = () => {
           onClick={() => {
             setCategory("mist");
             localStorage.setItem("category", "mist");
-          }}>
+          }}
+        >
           BODY MIST
         </Link>
 
-        <DeoGroup/>
-        <BathGroup/>
-        <BrandsGroup/>    
-        <BestSeller/>   
+        <DeoGroup />
+        <BathGroup />
+        <BrandsGroup />
+        <BestSeller />
 
         {/*----------------- Gift Set  --------------------*/}
         <Link
