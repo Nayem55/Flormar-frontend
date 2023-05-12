@@ -5,6 +5,8 @@ import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import CartPage from "../Pages/CartPage/CartPage";
+import Shipping from "../Pages/ShippingPage/Shipping";
+import PopCart from "../Components/PopCart/PopCart";
 
 
 
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
                 path: '/cart',
                 element:<CartPage></CartPage>
             },
+            {
+                path: '/shipping',
+                element:<Shipping></Shipping>
+            },
+            {
+                path: '/popCart',
+                element:<PopCart></PopCart>
+            }
            
         ]
     },

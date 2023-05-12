@@ -54,10 +54,10 @@ const CartProduct = ({ product }) => {
 
 
   return (
-    <div className="flex items-center h-[300px]">
+    <div className="flex items-center h-[200px]">
       <div className="flex w-[80%]">
         <div className="cart-product-container">
-          <div className="cart-img-container">
+          <div className="cart-img-container ">
             <img className="" src={product?.img} alt="" />
           </div>
           <div className="cart-product-details">

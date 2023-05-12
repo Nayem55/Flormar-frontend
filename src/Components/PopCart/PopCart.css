@@ -1,0 +1,26 @@
+.pop-cart-container{
+background-color: rgb(100, 100, 100);
+height: fit-content;
+width: 20%;
+color: white;
+padding: 10px 30px;
+letter-spacing: 1px;
+}
+
+.pop-cart-container a{
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.view-cart{
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 22px;
+    position: relative;
+}
+
+.view-cart::after{
+    content: '';
+    
+}

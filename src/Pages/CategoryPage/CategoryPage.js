@@ -19,20 +19,20 @@ const CategoryPage = () => {
             className="mx-2"
             icon={faCaretRight}
           ></FontAwesomeIcon>
-          {category}
+          {category.toUpperCase()}
         </p>
       </div>
-      <h1 className="font-bold my-10 text-[22px]">{category.toUpperCase()}</h1>
-      <div className="flex items-center mb-10">
+      <h1 className={`${category.includes('top 10')?'text-center':''} font-bold my-10 text-[22px]`}>{category.toUpperCase()}</h1>
+      <div className="flex} items-center mb-10">
         <button onClick={() => setList(false)}>
-          {" "}
+          
           <img
             width="25"
             height="25"
             src="https://img.icons8.com/sf-regular-filled/48/grid.png"
             alt="grid"
             className="inline mt-[-4px]"
-          />{" "}
+          />
           Grid
         </button>
         <button onClick={() => setList(true)}>

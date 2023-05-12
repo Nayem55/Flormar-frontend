@@ -47,7 +47,7 @@ const BestSeller = () => {
               setBrand('perfume')
               localStorage.setItem('brand','perfume')
             }} 
-            to='/category/best selling perfume'
+            to='/category/top 10 perfume'
             className=" hover:text-accent">PERFUME</Link>
 
             <hr className=" w-full text-white my-2" />
@@ -56,7 +56,7 @@ const BestSeller = () => {
               localStorage.setItem('category','bestseller')
               setBrand("mist")
               localStorage.setItem('brand','mist')
-            }}  to='/category/best selling mist' className=" hover:text-accent">MIST</Link>
+            }}  to='/category/top 10 mist' className=" hover:text-accent">MIST</Link>
             
             <hr className=" w-full text-white my-2" />
             <Link  onClick={()=>{
@@ -65,7 +65,7 @@ const BestSeller = () => {
               setBrand("deodorant")
               localStorage.setItem('brand','deodorant')
             }} 
-            to='/category/best selling deodorant'
+            to='/category/top 10 deodorant'
             className=" hover:text-accent">DEO</Link>
           </div>
         </div>

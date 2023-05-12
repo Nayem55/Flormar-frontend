@@ -30,7 +30,7 @@ const Product = ({ product,list }) => {
     let newCart = [];
     const exist = cart.find((product) => product._id === item._id);
     if (!exist) {
-      fetch('http://localhost:5000/cart',{
+      fetch('http://192.168.0.200:5000/cart',{
         method:'post',
         headers: {
           'content-type': 'application/json'

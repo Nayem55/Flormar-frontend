@@ -6,6 +6,7 @@ import router from "./Routes/Routes";
 import useProduct from "./Hooks/useProduct";
 import { useEffect, useState } from "react";
 import useCart from "./Hooks/useCart";
+import useOrder from "./Hooks/useOrder";
 
 function App() {
   const [products] = useProduct();
@@ -13,6 +14,7 @@ function App() {
   const [productType, setProductType] = useState("");
   const [brand, setBrand] = useState("");
   const [cart, setCart] = useCart();
+  const [orderList] = useOrder();
 
   useEffect(() => {
     const initialCategory = localStorage.getItem("category");
@@ -76,7 +78,7 @@ function App() {
       ?.filter(
         (product) => product?.category.toLowerCase() === brand?.toLowerCase()
       )
-      .slice(0, 20);
+      .slice(0, 10);
   } else {
     categoryProducts = products?.filter(
       (product) => product?.category.toLowerCase() === category?.toLowerCase()
@@ -91,7 +93,8 @@ function App() {
         setProductType,
         products,
         cart,
-        setCart
+        setCart,
+        orderList
       }}
     >
       <RouterProvider router={router}></RouterProvider>
