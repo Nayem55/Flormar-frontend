@@ -4,14 +4,13 @@ import Navbar from '../../Pages/Shared/Navbar/Navbar'
 
 const Header = () => {
       const [popCart, setPopCart] = useState(false);
-
-     const handlePopCart=() => {
-      setPopCart(!popCart);
+     const handlePopCart=(boolean) => {
+      setPopCart(boolean);
       }
     return (
         <>
                   
-      <Navbar handlePopCart={handlePopCart}></Navbar>
+      <Navbar popCart={popCart}  handlePopCart={handlePopCart}></Navbar>
       <Category handlePopCart={handlePopCart} popCart={popCart}></Category>
         </>
     );

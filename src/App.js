@@ -7,6 +7,9 @@ import useProduct from "./Hooks/useProduct";
 import { useEffect, useState } from "react";
 import useCart from "./Hooks/useCart";
 import useOrder from "./Hooks/useOrder";
+import {ReactComponent as UpArrow} from './Images/up-button.svg'
+
+import ScrollToTop from "react-scroll-to-top";
 
 function App() {
   const [products] = useProduct();
@@ -99,6 +102,7 @@ function App() {
       }}
     >
       <RouterProvider router={router}></RouterProvider>
+      <ScrollToTop smooth top="100"/>
       <Toaster />
     </ThemeContext.Provider>
   );

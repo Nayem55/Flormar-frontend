@@ -9,6 +9,7 @@ import Shipping from "../Pages/ShippingPage/Shipping";
 import PopCart from "../Components/PopCart/PopCart";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import Modal from "../Components/Modal/Modal";
 
 
 
@@ -45,7 +46,11 @@ const router = createBrowserRouter([
             {
                 path: '/product/:id',
                 element:<ProductDetails/>
-            }
+            },
+            {
+                path: '/modal/:modalId',
+                element:<Modal/>
+            },
 
            
         ]

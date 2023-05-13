@@ -23,11 +23,11 @@
   background: black !important;
 }
 .nav-menu-scrolled{
-  max-height: 60px;
+  max-height: 65px;
 }
 
 .dropdown-scrolled{
-  min-height: 60px;
+  min-height: 65px;
 }
 
 .all-menu{
@@ -62,7 +62,7 @@
 }
 .short-logo {
   margin-top: 0;
-  width: 20px;
+  width: 60px;
 }
 
 @media screen and (max-width:1370px){

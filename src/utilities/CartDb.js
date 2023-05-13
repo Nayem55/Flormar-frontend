@@ -1,7 +1,7 @@
 // use local storage to manage cart data
-const addToDb = id =>{
-    let shoppingCart = {};
-
+const addToDb = (id,quantity) =>{
+    let shoppingCart = {};console.log(id,quantity)
+    const productQuantity = quantity || 1    
     //get the shopping cart from local storage
     const storedCart = localStorage.getItem('shopping-cart');
     if(storedCart){
@@ -9,13 +9,12 @@ const addToDb = id =>{
     }
 
     // add quantity
-    const quantity = shoppingCart[id];
-    if(quantity){
-        const newQuantity = quantity + 1;
+    if(shoppingCart[id]){
+        const newQuantity = shoppingCart[id] + productQuantity ;
         shoppingCart[id] = newQuantity;
     }
     else{
-        shoppingCart[id] = 1;
+        shoppingCart[id] = productQuantity;
     }
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 }

@@ -8,7 +8,7 @@
   gap: 30px;
 }
 
-.featured div {
+.featured a {
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -17,7 +17,7 @@
   position: relative;
 }
 
-.featured div::after {
+.featured a::after {
   content: "";
   background-color: black;
   width: 100%;
@@ -29,7 +29,7 @@
   transition: opacity 400ms ease-in-out;
 }
 
-.featured div:hover::after {
+.featured a:hover::after {
   opacity: 0.3;
   color: #ff81a9;
 }
@@ -40,6 +40,6 @@
   height: 200px;
   transition: scale 400ms ease-in-out;
 }
-.featured div:hover img{
+.featured a:hover img{
   scale: 1.1;
 }

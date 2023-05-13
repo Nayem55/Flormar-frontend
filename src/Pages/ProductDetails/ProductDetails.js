@@ -10,23 +10,24 @@ import { addToDb } from "../../utilities/CartDb";
 const ProductDetails = () => {
   const { products } = useContext(ThemeContext);
   const { id } = useParams();
-  const product = products?.find((product) => product._id === id);
   const [quantity, setQuantity] = useState(1);
   const { cart, setCart } = useContext(ThemeContext);
+
+  const product = products?.find((product) => product._id === id);
 
   const handleAddToCart = (item) => {
     let newCart = [];
     const exists = cart.find((product) => product?._id == item._id);
     if (!exists) {
-      item.quantity = 1;
+      item.quantity = quantity;
       newCart = [...cart, item];
     } else {
-      item.quantity = exists.quantity + 1;
+      item.quantity = exists.quantity + quantity;
       const rest = cart.filter((product) => product?._id !== item._id);
       newCart = [...rest, item];
     }
     setCart(newCart);
-    addToDb(item._id);
+    addToDb(item._id,quantity);
 
     toast.success("ADDED TO CART");
   };
@@ -44,6 +45,8 @@ const ProductDetails = () => {
     toast.success("ADDED TO CART");
   };
 
+  
+
   return (
     <div className="productDetails-container flex 2xl:w-[65%] md:w-[75%] mx-auto">
       <div className="productDetails flex items-center w-[50%]">
@@ -60,10 +63,10 @@ const ProductDetails = () => {
           <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
         </div>
         <p className="text-sm text-secondary text-opacity-70">
-          {product?.brand.toUpperCase()}
+          {product?.brand?.toUpperCase()}
         </p>
         <p>Availablity : In Stock</p>
-        <p>Product Type : {product?.productType.toUpperCase()}</p>
+        <p>Product Type : {product?.productType?.toUpperCase()}</p>
         <p className="my-10 text-secondary text-opacity-70">
           {product?.description}
         </p>
@@ -75,7 +78,7 @@ const ProductDetails = () => {
         <div className="flex items-center">
           <FontAwesomeIcon
             onClick={() => quantity > 1 && setQuantity(quantity - 1)}
-            className="text-secondary text-xs p-[6px] border border-secondary"
+            className="text-secondary cursor-pointer text-xs p-[6px] border border-secondary"
             icon={faMinus}
           ></FontAwesomeIcon>
           <input
@@ -85,7 +88,7 @@ const ProductDetails = () => {
           />
           <FontAwesomeIcon
             onClick={() => setQuantity(quantity + 1)}
-            className="text-secondary bg-primary text-xs p-[6px] border border-secondary"
+            className="text-secondary bg-primary cursor-pointer text-xs p-[6px] border border-secondary"
             icon={faPlus}
           ></FontAwesomeIcon>
         </div>

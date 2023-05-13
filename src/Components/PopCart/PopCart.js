@@ -28,7 +28,7 @@ const PopCart = ({popCart,handlePopCart}) => {
 }
 
   return (
-    <div className={`pop-cart-container  ${popCart?'':'top-[-900px]'} ${scrollPosition>80?'top-[60px]':'top-[50px]'}`}>
+    <div className={`pop-cart-container  ${popCart?'':'top-900'} ${scrollPosition>80?'top-[60px]':'top-[50px]'}`}>
       <div className="pop-cart-products pr-4 max-h-[400px] overflow-y-scroll">
         {cart?.map((product) => (
           <div key={product._id} className="pop-product mb-4 gap-4 flex h-[30%] items-center">

@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import "./Category.css";
 import useScroll from "../../Hooks/useScroll";
-import logo from "../../Images/F-logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState } from "react";
+import logo from "../../Images/logo2.png";
+import { useContext, useRef } from "react";
 import { ThemeContext } from "../../Contexts/ThemeContext";
 import PerfumeGroup from "../NavCategories/PerfumeGroup";
 import DeoGroup from "../NavCategories/DeoGroup";
@@ -18,7 +16,7 @@ const Category = ({ popCart,handlePopCart }) => {
 
   const { setCategory, setBrand, setProductType } = useContext(ThemeContext);
   return (
-    <div
+    <div 
       className={`nav-menu relative transition-all ease-in-out duration-300 text-center  text-white  ${
         scrollPosition > 80 ? "nav-menu-scrolled" : "p-0"
       }`}
@@ -34,6 +32,7 @@ const Category = ({ popCart,handlePopCart }) => {
       ) : (
         ""
       )}
+  
 
       {/*------------------------------------- All Navigation Category  ------------------------------------*/}
 
@@ -77,7 +76,6 @@ const Category = ({ popCart,handlePopCart }) => {
             localStorage.setItem("category", "online exclusive");
           }}
           className="hover:text-accent font-bold"
-          href="/Cosmetics"
         >
           ONLINE EXCLUSIVE
         </Link>

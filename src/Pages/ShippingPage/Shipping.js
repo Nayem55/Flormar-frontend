@@ -25,7 +25,7 @@ const Shipping = () => {
             phone,
             cart,
         }
-        fetch('http://192.168.0.200:5000/order',{
+        fetch('http://192.168.0.199:5000/order',{
             method:'post',
             headers: {
               'content-type': 'application/json'

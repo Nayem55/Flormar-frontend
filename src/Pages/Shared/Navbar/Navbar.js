@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../../../Images/Flormar-Logo-Png-1.png";
+import logo from "../../../Images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquarePhoneFlip, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp, faSquarePhoneFlip, faUser } from "@fortawesome/free-solid-svg-icons";
 import useScroll from "../../../Hooks/useScroll";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -11,7 +11,7 @@ import { signOut } from "firebase/auth";
 import { ThemeContext } from "../../../Contexts/ThemeContext";
 import SearchedProducts from "../../../Components/SearchedProducts/SearchedProducts";
 
-const Navbar = ({ handlePopCart }) => {
+const Navbar = ({ popCart,handlePopCart }) => {
   const [scrollPosition] = useScroll();
   const [user] = useAuthState(auth);
   const { cart } = useContext(ThemeContext);
@@ -20,6 +20,8 @@ const Navbar = ({ handlePopCart }) => {
   const {searchText,setSearchText} = useContext(ThemeContext);
   const {setCategory} = useContext(ThemeContext);
   const location = useLocation();
+
+
 
   let quantity = 0;
   cart?.forEach((product) => {
@@ -41,7 +43,7 @@ const Navbar = ({ handlePopCart }) => {
 
   return (
     <div className="w-full z-10">
-      <div className="flex justify-end px-10">
+      <div className="flex justify-end px-10 pt-2">
         <p className="font-bold mr-16">
           <FontAwesomeIcon
             icon={faSquarePhoneFlip}
@@ -79,7 +81,7 @@ const Navbar = ({ handlePopCart }) => {
         {/* logo */}
         <div className="cursor-pointer">
           <Link to="/">
-            <img src={logo} className="w-44" alt="" />
+            <img src={logo} className="w-[250px] h-[60px]" alt="" />
           </Link>
         </div>
         {/*.......... search bar............. */}
@@ -141,7 +143,7 @@ const Navbar = ({ handlePopCart }) => {
               {location.pathname.includes("/cart") || (
                 <div>
                   <svg
-                    onClick={handlePopCart}
+                    onClick={()=>handlePopCart(!popCart)}
                     xmlns="http://www.w3.org/2000/svg"
                     className={`transition ease-in duration-200 ${
                       scrollPosition > 80

@@ -7,13 +7,20 @@ const SearchedProducts = ({ searchedProducts, highPriorityProducts, focus }) => 
   const navigate = useNavigate()
   const {setCategory} = useContext(ThemeContext)
 
-  const searchedArray = highPriorityProducts? highPriorityProducts : SearchedProducts;
+  let searchedArray = [];
+
+  if(highPriorityProducts.length>0){
+    searchedArray = highPriorityProducts;
+  }else{
+    searchedArray = searchedProducts
+  }
+
 
   return (
     <div className={`searchedProducts ${focus?"block":"hidden"}`}>
       <p className="text-xs font-bold">POPULAR PRODUCTS</p>
       <hr className="my-2"/>
-      <div className="searchedProduct">
+      <div className="searchedProduct cursor-pointer">
         {searchedArray.slice(0, 3)?.map((product) => (
           <div onClick={()=>navigate(`/product/${product._id}`)} className="flex flex-col items-center">
             <img src={product.img} alt="" />

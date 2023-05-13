@@ -5,15 +5,25 @@
 
 }
 .cart-scrolled-50{
-   top: 15px;
    right: -4000px;
 }
 .cart-scrolled-80{
-   top: 15px;
+   top: 18px;
    right: 40px;
 }
 
 .cart-not-scrolled{
-    top: 40px;
+    top: 53px;
     right: 40px;
+}
+
+.goToTop{
+   position: sticky;
+   bottom: 100px;
+   left: 95%;
+   background: white;
+   font-size: 40px;
+   padding: 10px;
+   z-index: 9999;
+   display: inline;
 }
