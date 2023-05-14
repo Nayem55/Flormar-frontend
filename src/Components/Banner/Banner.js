@@ -1,7 +1,7 @@
-import banner1 from "../../Images/banner1.webp";
-import banner2 from '../../Images/banner2.webp'
+import banner1 from '../../Images/perfume-banner.jpg'
+import banner2 from "../../Images/perfume-banner2.jpg"
 import { Swiper, SwiperSlide } from "swiper/react";
-import {Autoplay, EffectFade, Navigation} from "swiper";
+import {Autoplay, EffectFade, Navigation, Pagination} from "swiper";
 
 import './Banner.css'
 import "swiper/css";
@@ -14,24 +14,25 @@ import "swiper/css/pagination";
 
 const Banner = () => {
   return (
-    <div className="h-[80vh]">
+    <div className="h-[25vh] sm:h-[80vh]">
        <Swiper
         spaceBetween={30}
         effect={"fade"}
-        navigation={true}
+        navigation={window.innerWidth < 640?false:true}
      
         autoplay={{
           delay: 10000 ,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, EffectFade, Navigation]}
+        pagination={window.innerWidth < 640 ? {dynamicBullets: true} : false }
+        modules={[Autoplay, EffectFade, Navigation, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
-          <img className="w-full" src={banner1} alt="" />
+          <img className="w-full h-[22vh] sm:h-[80vh]" src={banner1} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img className="w-full" src={banner2} alt="" />
+          <img className="w-full h-[22vh] sm:h-[80vh]" src={banner2} alt="" />
         </SwiperSlide>
 
       </Swiper>

@@ -47,12 +47,12 @@ const CartProduct = ({ product }) => {
 
   return (
     <div className="flex items-center h-[200px]">
-      <div className="flex w-[80%]">
+      <div className="flex w-[70%] sm:w-[80%]">
         <div className="cart-product-container">
           <div className="cart-img-container ">
             <img className="" src={product?.img} alt="" />
           </div>
-          <div className="cart-product-details">
+          <div className="cart-product-details]">
             <p className="opacity-70">{product?.name}</p>
             <p>{product?.brand.toUpperCase()}</p>
             <p className="text-accent font-bold">${product?.price}</p>
@@ -60,7 +60,7 @@ const CartProduct = ({ product }) => {
         </div>
       </div>
 
-      <div className="flex flex-col w-[20%] gap-0 ">
+      <div className="flex flex-col  w-[30%] sm:w-[20%] gap-0 ">
         {/*--------------- Input Group  --------------*/}
         <div className="flex gap-6 items-center">
           <div className="w-[70%] relative">

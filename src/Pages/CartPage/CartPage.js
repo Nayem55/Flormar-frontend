@@ -23,7 +23,7 @@ const CartPage = () => {
     price = price + product.price * product.quantity;
   });
   return (
-    <div className="2xl:w-[65%] md:w-[75%] mx-auto mb-10">
+    <div className="2xl:w-[65%] md:w-[75%] w-[90%] mx-auto mb-10">
       <div className="my-10">
         <p className="text-[12px] font-semibold">
           Home
@@ -33,7 +33,7 @@ const CartPage = () => {
           ></FontAwesomeIcon>
           Shopping Cart
         </p>
-        <div className="flex justify-between">
+        <div className="flex flex-col sm:flex-row justify-between">
           <p className="text-xl my-4 font-bold">My Cart</p>
           {newCustomer&&<p>Get <span className="text-2xl font-bold text-accent">10%</span> Discount On First Purchase</p>}
           <Link to="/" className="flex items-center">
@@ -43,8 +43,8 @@ const CartPage = () => {
         </div>
       </div>
 
-      <div className="cart-container flex gap-[40px]">
-        <div className="w-[70%]">
+      <div className="cart-container flex flex-col sm:flex-row gap-[40px]">
+        <div className="w-[100%] sm:w-[70%]">
           <div className="flex mb-4 justify-between bg-secondary bg-opacity-10 px-10 py-4">
             <p className="w-[85%]">Products</p>
             <p className="w-[15%]">Quantity</p>
@@ -54,7 +54,7 @@ const CartPage = () => {
           ))}
         </div>
 
-        <div className="subtotal flex flex-col items-center w-[30%]">
+        <div className="subtotal flex flex-col items-center w-[100%] sm:w-[30%]">
             <p className="block bg-secondary px-4 py-4 bg-opacity-10 w-full text-center">Subtotal</p>
             <div className="flex items-center gap-4">
             <p className="text-3xl my-6 text-accent font-bold">$

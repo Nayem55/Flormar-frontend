@@ -2,6 +2,7 @@ html{
   color: black !important;
   font-family: muli,sans-serif;
   letter-spacing: -0.5px;
+  scroll-behavior: smooth;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -39,5 +40,11 @@ input[type=number]:focus {
 
 .pop-cart-products::-webkit-scrollbar-thumb:hover,.searchedProducts::-webkit-scrollbar-thumb:hover,.dialogue.searchedProducts::-webkit-scrollbar-thumb:hover   {
   background:rgba(128, 128, 128, 0.603);
+}
+
+.scroll-to-top{
+  background-color: transparent !important;
+  box-shadow: none  !important;
+  overflow: visible !important;
 }
 

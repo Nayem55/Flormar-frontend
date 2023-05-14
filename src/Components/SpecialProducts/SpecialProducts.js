@@ -3,17 +3,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./SpecialProduct.css";
-import { Navigation } from "swiper";
+import { Navigation,Pagination } from "swiper";
 import { Link } from "react-router-dom";
 
 const SpecialProducts = () => {
+  let quantity;
+  if(window.innerWidth<640){
+    quantity = 2;
+  }
+  else
+  quantity = 3;
   return (
-    <div className="special-product">
+    <div className="special-product px-4 sm:px-0">
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        navigation={true}
-        modules={[Navigation]}
+        slidesPerView={
+          quantity
+        }
+        spaceBetween={quantity<3?0:30}
+        navigation={quantity<3?false:true}
+        pagination={quantity<3?{dynamicBullets: true}:false}
+        modules={[Navigation,Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -25,7 +34,7 @@ const SpecialProducts = () => {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to="/product/645e7d603374d6ab95450069">
+          <Link to="/product/645e7d603374d6ab95450062" >
             <img
               src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Tres_Nuit_M_1c_350x.jpg?v=1635150382"
               alt=""
@@ -33,7 +42,7 @@ const SpecialProducts = () => {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to="/product/645e7d603374d6ab95450062">
+          <Link to="/product/645e7d603374d6ab95450069">
             <img
               src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Sillage_105ml_-_5_350x.jpg?v=1635150103"
               alt=""

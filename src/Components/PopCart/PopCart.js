@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "../../Contexts/ThemeContext";
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import useScroll from "../../Hooks/useScroll";
 import { removeFromDb } from "../../utilities/CartDb";
 
-const PopCart = ({popCart,handlePopCart}) => {
+const PopCart = ({ popCart, handlePopCart }) => {
   const { cart, setCart } = useContext(ThemeContext);
   const [scrollPosition] = useScroll();
 
@@ -20,22 +20,35 @@ const PopCart = ({popCart,handlePopCart}) => {
   });
 
   const handleDelete = (id) => {
-    const rest = cart.filter(product => product._id !== id)
-    setCart(rest)
-    removeFromDb(id)
-    console.log(id)
+    const rest = cart.filter((product) => product._id !== id);
+    setCart(rest);
+    removeFromDb(id);
+  };
 
-}
+
+  
 
   return (
-    <div className={`pop-cart-container  ${popCart?'':'top-900'} ${scrollPosition>80?'top-[60px]':'top-[50px]'}`}>
-      <div className="pop-cart-products pr-4 max-h-[400px] overflow-y-scroll">
+    <div 
+      className={`pop-cart-container  lg:w-[30%] 2xl:w-[22%] ${
+        popCart ? "right-20 " : "right-1000 top-900"
+      } ${scrollPosition > 80 ? "  sm:top-[64px]" : "sm:top-[160px]"}`}
+    >
+      <div className="close-button absolute right-4 top-4" onClick={()=>handlePopCart(false)}>
+      <FontAwesomeIcon  icon={faXmark} className="inline mr-2 text-md " />
+      <p className="inline text-md">Close</p>
+      </div>
+      <h2 className={"mt-10 ml-4 pb-4 my-cart sm:hidden"}>MY CART:</h2>
+      <div className="pop-cart-products pr-4 max-h-[550px] overflow-y-scroll">
         {cart?.map((product) => (
-          <div key={product._id} className="pop-product mb-4 gap-4 flex h-[30%] items-center">
+          <div
+            key={product._id}
+            className="pop-product mb-4 gap-4 flex h-[30%] items-center"
+          >
             <div className="pop-img w-[20%] h-[70px]">
               <img src={product.img} className="w-full h-full" alt="" />
             </div>
-            <div className="pop-details w-[65%] mr-2">
+            <div className="pop-details 2xl:w-[65%] md:w-[75%] mr-2">
               <h3 className="">{product.name}</h3>
               <p>
                 ${product.price}X{product.quantity}
@@ -52,18 +65,40 @@ const PopCart = ({popCart,handlePopCart}) => {
         ))}
       </div>
 
-      <div className="flex justify-between py-4 ">
-        <p>Total:</p>
-        <p>${price}</p>
+      <div className="hidden sm:block">
+        <div className=" flex justify-between py-4 mobile-price">
+          <p>Total:</p>
+          <p>${price}</p>
+        </div>
+        <Link className="add-btn hidden sm:block " to="/shipping">
+          CHECKOUT NOW
+        </Link>
+        <Link
+          className="view-cart hidden"
+          to={"/cart"}
+          onClick={() => handlePopCart(false)}
+        >
+          OR VIEW CART
+        </Link>
       </div>
-      <Link className="add-btn" to="/shipping">
 
-        CHECKOUT NOW
-      </Link>
-      <Link className="view-cart" to={"/cart"} onClick={()=> handlePopCart(false)}>
+      <div className="absolute sm:hidden w-full bottom-20 px-2  pr-4">
+        <div className="w-full flex justify-between mb-4">
+          <p>Total:</p>
+          <p>${price}</p>
+        </div>
 
-        OR VIEW CART
-      </Link>
+        <Link onClick={() => handlePopCart(false)} className="add-btn mobile-checkout" to="/shipping">
+          CHECKOUT NOW
+        </Link>
+        <Link
+          className="view-cart"
+          to={"/cart"}
+          onClick={() => handlePopCart(false)}
+        >
+          OR VIEW CART
+        </Link>
+      </div>
     </div>
   );
 };

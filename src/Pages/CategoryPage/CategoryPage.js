@@ -11,8 +11,8 @@ const CategoryPage = () => {
   const { categoryProducts } = useContext(ThemeContext);
   const [list, setList] = useState(false);
   return (
-    <div className="2xl:w-[65%] md:w-[75%] mx-auto mb-20">
-      <div className="my-10">
+    <div className="2xl:w-[65%] md:w-[75%] w-[95%] mx-auto mb-20">
+      <div className="my-10 w-[90%] 2xl:w-[full md:w-full  mx-auto">
         <p className="text-[14px] font-semibold">
           Home
           <FontAwesomeIcon
@@ -22,8 +22,9 @@ const CategoryPage = () => {
           {category?.toUpperCase()}
         </p>
       </div>
-      <h1 className={`${category?.includes('top 10')?'text-center':''} font-bold my-10 text-[22px]`}>{category?.toUpperCase()}</h1>
-      <div className="flex} items-center mb-10">
+      <h1 className={`w-[90%] 2xl:w-full md:w-full mx-auto ${category?.includes('top 10')?'text-center':''} font-bold my-10 text-[22px]`}>{category?.toUpperCase()}</h1>
+
+      <div className="hidden sm:flex items-center mb-10">
         <button onClick={() => setList(false)}>
           
           <img
@@ -47,7 +48,7 @@ const CategoryPage = () => {
           ))}
         </div>
       ) : (
-        <div className="grid gap-6 grid-cols-4">
+        <div className="grid grid-cols-2 gap-y-8 sm:gap-6 sm:grid-cols-4">
           {categoryProducts?.map((product) => (
             <Product key={product._id} product={product}></Product>
           ))}

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-secondary footer-container">
-      <footer className=" pt-16 pb-28  text-white 2xl:w-[65%] md:w-[75%] mx-auto">
-        <div className="flex justify-between ">
+    <div className="bg-secondary overflow-hidden footer-container">
+      <footer className=" pt-16 pb-28  text-white  2xl:w-[65%] md:w-[75%] w-[80%] mx-auto">
+        <div className="grid grid-cols-2 gap-10  mx-auto  sm:flex sm:flex-row sm:justify-between ">
           <div className="flex flex-col text">
             <span className="font-bold mb-4">GET TO KNOW US</span>
             <Link className="hover:text-accent">Terms of Service</Link>

@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 import { Link } from "react-router-dom";
 
 import "swiper/css";
@@ -11,18 +11,24 @@ import { ThemeContext } from "../../Contexts/ThemeContext";
 
 const SpecialProducts = () => {
   const { setCategory,setBrand} = useContext(ThemeContext);
+  let quantity;
+  if(window.innerWidth<640){
+    quantity = 3;
+  }else
+  quantity=5
   return (
-    <div className="homeBrand">
+    <div className="homeBrand px-4 sm:px-0 ">
         <h2 className="text-center">OUR BRANDS</h2>
       <Swiper
-        slidesPerView={5}
-        spaceBetween={50}
-        navigation={true}
+        slidesPerView={quantity}
+        spaceBetween={quantity<5?0:50}
+        navigation={quantity<5?false:true}
+        pagination={quantity<5?{dynamicBullets: true}:false}
         autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
-        modules={[Navigation,Autoplay]}
+        modules={[Navigation,Autoplay,Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -32,6 +38,7 @@ const SpecialProducts = () => {
               setBrand("armaf")
               localStorage.setItem('brand','armaf')
             }}
+            className="mb-16"
             to="/category/armaf">
             <img
               src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Armaf_Luxury_french_logo_350x.jpg?v=1620128356"

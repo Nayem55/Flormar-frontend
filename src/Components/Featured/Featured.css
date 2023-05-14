@@ -43,3 +43,21 @@
 .featured a:hover img{
   scale: 1.1;
 }
+
+@media screen and (max-width: 640px) {
+  .featured {
+    margin-top: 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 0px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .featured a {
+    height: 180px;
+  }
+
+}

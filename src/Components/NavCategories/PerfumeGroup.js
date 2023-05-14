@@ -25,7 +25,7 @@ const PerfumeGroup = () => {
           localStorage.setItem("category", "perfume");
         }}
         to={`/category/Perfume`}
-        className="mr-10 hover:text-accent font-bold "
+        className="mr-10 block hover:text-accent font-bold "
       >
         PERFUME
         <FontAwesomeIcon

@@ -1,6 +1,7 @@
 import Product from "../Shared/Product";
 import { ThemeContext } from "../../Contexts/ThemeContext";
 import { useContext } from "react";
+import './NewArrival.css'
 
 const NewArrivals = () => {
   const { products } = useContext(ThemeContext);
@@ -9,9 +10,9 @@ const NewArrivals = () => {
     .slice(29, 37);
 
   return (
-    <div className="">
+    <div className="new-arrivals">
       <h1 className="text-center text-xl font-bold mb-[50px]">NEW ARRIVALS</h1>
-      <div className="grid gap-6 grid-cols-4">
+      <div className="grid grid-cols-2 sm:gap-6 sm:grid-cols-4">
         {newArrivals?.map((product) => (
           <Product product={product}></Product>
         ))}

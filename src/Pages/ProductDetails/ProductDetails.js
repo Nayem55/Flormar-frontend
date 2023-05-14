@@ -41,19 +41,17 @@ const ProductDetails = () => {
 
     setCart(newCart);
     localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
-
-    toast.success("ADDED TO CART");
   };
 
   
 
   return (
-    <div className="productDetails-container flex 2xl:w-[65%] md:w-[75%] mx-auto">
-      <div className="productDetails flex items-center w-[50%]">
+    <div className="flex flex-col sm:flex-row 2xl:w-[65%] md:w-[75%] mx-auto">
+      <div className=" flex items-center w-[100%] sm:w-[50%]">
         <img src={product?.img} alt="" />
       </div>
 
-      <div className="w-[50%] py-10">
+      <div className="w-[100%] mx-auto px-10 sm:px-0 py-10">
         <p className="text-3xl my-3">{product?.name}</p>
         <div className="text-[#f3c621]">
           <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>

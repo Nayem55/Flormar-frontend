@@ -36,7 +36,7 @@ const Signup = () => {
 
 
     return (
-        <div className='2xl:w-[65%] md:w-[75%] mx-auto mb-20'>
+        <div className='2xl:w-[65%] md:w-[75%] w-[90%] mx-auto mb-20'>
             <div className='my-10'>
                 <p className='text-[12px] font-semibold'>Home<FontAwesomeIcon className='mx-2' icon={faCaretRight}></FontAwesomeIcon>Create Account</p>
                 <p className='text-xl my-4 font-bold'>CREATE AN ACCOUNT</p>
@@ -45,22 +45,22 @@ const Signup = () => {
             <form onSubmit={handleSignup}>
                 <div className='mb-4'>
                     <p className='text-[14px] font-semibold mb-2'>First Name</p>
-                    <input type="text" name='first name' className='border px-3 border-secondary border-opacity-50 w-[30vw] h-[32px]' />
+                    <input type="text" name='first name' className='border px-3 border-secondary border-opacity-50 w-[80%] sm:w-[30vw] h-[32px]' />
                 </div>
                 <div className='mb-4'>
                     <p className='text-[14px] font-semibold mb-2'>LAST NAME</p>
-                    <input type="text" name='last name' className='border px-3 border-secondary border-opacity-50 w-[30vw] h-[32px]' />
+                    <input type="text" name='last name' className='border px-3 border-secondary border-opacity-50 w-[80%] sm:w-[30vw] h-[32px]' />
                 </div>
                 <div className='mb-4'>
                     <p className='text-[14px] font-semibold mb-2'>YOUR EMAIL ADDRESS</p>
-                    <input type="email" name='email' required className='border px-3 border-secondary border-opacity-50 w-[30vw] h-[32px]' />
+                    <input type="email" name='email' required className='border px-3 border-secondary border-opacity-50 w-[80%] sm:w-[30vw] h-[32px]' />
                 </div>
                 <div className='mb-4'>
                     <p className='text-[14px] font-semibold mb-2'>YOUR PASSWORD</p>
-                    <input type="password" name='password' required className='border px-3 border-secondary border-opacity-50 w-[30vw] h-[32px]' />
+                    <input type="password" name='password' required className='border px-3 border-secondary border-opacity-50 w-[80%] sm:w-[30vw] h-[32px]' />
                 </div>
                 <p className='text-error mb-3 font-bold'>{error?.message}</p>
-                <input type='submit' value="CREATE AN ACCOUNT" className='w-[280px] bg-secondary text-primary px-4 py-2 text-sm font-bold cursor-pointer'/>
+                <input type='submit' value="CREATE AN ACCOUNT" className='w-[200px] sm:w-[280px] bg-secondary text-primary px-4 py-2 text-sm font-bold cursor-pointer'/>
                 <p className='text-[14px] font-semibold my-4'>Already have an account ? <Link to="/login" className='text-accent font-bold'>Login</Link></p>
             </form>
         </div>

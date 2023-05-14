@@ -121,3 +121,34 @@
 .list-container .img-container:hover .add-btn {
   display: none;
 }
+
+@media screen and (max-width: 640px) {
+  .product {
+    width: 80%;
+  }
+
+  .product-details {
+    padding: 0;
+  }
+  
+  .add-btn{
+    padding: 6px;
+    display: block;
+
+    border: 1px solid black;
+  }
+
+  .img-container:hover .details-btn {
+    display: none;
+  }
+
+  .featuredCollection .product-details {
+    padding: 0 ;
+  }
+
+  .featuredCollection .img-container {
+    height: 60%;
+  }
+
+
+}

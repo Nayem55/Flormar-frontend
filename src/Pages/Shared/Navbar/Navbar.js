@@ -3,30 +3,24 @@ import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../../Images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleUp, faSquarePhoneFlip, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePhoneFlip, faUser } from "@fortawesome/free-solid-svg-icons";
 import useScroll from "../../../Hooks/useScroll";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { signOut } from "firebase/auth";
 import { ThemeContext } from "../../../Contexts/ThemeContext";
 import SearchedProducts from "../../../Components/SearchedProducts/SearchedProducts";
+import Cart from "../../../Components/Cart/Cart";
 
 const Navbar = ({ popCart,handlePopCart }) => {
-  const [scrollPosition] = useScroll();
   const [user] = useAuthState(auth);
-  const { cart } = useContext(ThemeContext);
   const { products } = useContext(ThemeContext);
   const [focus,setFocus] = useState(false)
   const {searchText,setSearchText} = useContext(ThemeContext);
   const {setCategory} = useContext(ThemeContext);
-  const location = useLocation();
 
 
 
-  let quantity = 0;
-  cart?.forEach((product) => {
-    quantity = quantity + product?.quantity;
-  });
 
   let highPriorityProducts = [];
   let searchedProducts = [];
@@ -42,7 +36,7 @@ const Navbar = ({ popCart,handlePopCart }) => {
   }
 
   return (
-    <div className="w-full z-10">
+    <div className="w-full hidden sm:block z-10">
       <div className="flex justify-end px-10 pt-2">
         <p className="font-bold mr-16">
           <FontAwesomeIcon
@@ -65,7 +59,7 @@ const Navbar = ({ popCart,handlePopCart }) => {
               Log Out
             </Link>
           ) : (
-            <div>
+            <div className="flex gap-2">
               <Link to="login" className="hover:text-accent">
                 Sign in
               </Link>
@@ -81,7 +75,7 @@ const Navbar = ({ popCart,handlePopCart }) => {
         {/* logo */}
         <div className="cursor-pointer">
           <Link to="/">
-            <img src={logo} className="w-[250px] h-[60px]" alt="" />
+            <img src={logo} className="w-full h-[60px]" alt="" />
           </Link>
         </div>
         {/*.......... search bar............. */}
@@ -128,54 +122,7 @@ const Navbar = ({ popCart,handlePopCart }) => {
             />
           </div>
         </div>
-        <div className="flex-none">
-          {/*----------------- Navbar Cart -----------------*/}
-          <div
-            className={` cart-icon  ${
-              scrollPosition > 10 ? "cart-scrolled-50" : "cart-not-scrolled"
-            } ${
-              scrollPosition > 80 ? "cart-scrolled-80" : "cart-scrolled-50"
-            } `}
-          >
-            <div className="indicator">
-              {/*-------------- cart icon -------------*/}
-
-              {location.pathname.includes("/cart") || (
-                <div>
-                  <svg
-                    onClick={()=>handlePopCart(!popCart)}
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`transition ease-in duration-200 ${
-                      scrollPosition > 80
-                        ? "text-primary h-6 w-6 cursor-pointer"
-                        : "h-7 w-7 text-secondary cursor-pointer"
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-
-                  <span
-                    className={`badge  bg-accent text-primary font-bold border-none ${
-                      scrollPosition > 80
-                        ? "badge-sm text-xs pt-1"
-                        : "badge-md text-lg pt-1"
-                    } badge-sm text-xs pt-1 indicator-item`}
-                  >
-                    {quantity}
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+              <Cart popCart={popCart} handlePopCart={handlePopCart}></Cart>
       </div>
     </div>
   );

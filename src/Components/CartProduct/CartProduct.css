@@ -23,7 +23,7 @@
     transition: opacity 200ms ease-in-out;
 }
 .upArrow:hover,.downArrow:hover{
-    color: #f34b7f;
+    color: #cb9815;
 }
 
 .upArrow{
@@ -42,5 +42,6 @@
 }
 
 .upArrow:hover .quantity-input,.downArrow:hover .quantity-input,.quantity-input:hover {
-    border:1px solid #f34b7f;
+    border:1px solid  #cb9815;
 }
+

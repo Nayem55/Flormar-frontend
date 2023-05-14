@@ -25,7 +25,7 @@ const Shipping = () => {
             phone,
             cart,
         }
-        fetch('http://192.168.0.199:5000/order',{
+        fetch('https://fragrance-backend.vercel.app/order',{
             method:'post',
             headers: {
               'content-type': 'application/json'
@@ -39,7 +39,7 @@ const Shipping = () => {
           toast.success("ORDER CONFIRMED")
     }
   return (
-    <div className="2xl:w-[65%] md:w-[75%] mx-auto">
+    <div className="2xl:w-[65%] md:w-[75%] w-[90%] mx-auto">
       <div className="my-10">
         <p className="text-[12px] font-semibold">
           Cart

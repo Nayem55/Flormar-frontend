@@ -32,3 +32,13 @@ letter-spacing:1px;
 .special-product .swiper-button-next::after{
     margin-left: 25px;
 }
+
+.homeBrand .swiper-pagination-bullet-active-next{
+  background: #000;
+  opacity: 0.7;
+}
+
+.homeBrand .swiper-pagination-bullet-active-prev{
+  background: #000;
+  opacity: 0.7;
+}

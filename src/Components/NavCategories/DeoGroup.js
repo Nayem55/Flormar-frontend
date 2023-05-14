@@ -111,9 +111,17 @@ const DeoGroup = () => {
               </div>
             </div>
             <hr className=" w-full text-white my-2" />
-            <Link className=" hover:text-accent">For Men</Link>
+            <Link onClick={()=>{
+            setCategory("deoMen");
+            localStorage.setItem("category", "deoMen");
+          }}
+          to="category/deodorant for men" className=" hover:text-accent">For Men</Link>
             <hr className=" w-full text-white my-2" />
-            <Link className=" hover:text-accent">For Women</Link>
+            <Link onClick={()=>{
+            setCategory("deoWomen");
+            localStorage.setItem("category", "deoWomen");
+          }}
+          to="category/deodorant for women" className=" hover:text-accent">For Women</Link>
           </div>
         </div>
     );
