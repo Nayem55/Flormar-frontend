@@ -82,7 +82,7 @@ const PopCart = ({ popCart, handlePopCart }) => {
         </Link>
       </div>
 
-      <div className="absolute sm:hidden w-full bottom-20 px-2  pr-4">
+      <div className=" sm:hidden w-full bottom-20 px-2 py-2  pr-4">
         <div className="w-full flex justify-between mb-4">
           <p>Total:</p>
           <p>${price}</p>

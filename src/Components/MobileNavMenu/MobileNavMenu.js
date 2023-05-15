@@ -31,6 +31,7 @@ const MobileNavMenu = ({ popCart, handlePopCart }) => {
 
   const handleMenu = (menu) => {
     setMenu(menu);
+    setShowSearch(false)
     if (menu) {
       handlePopCart(false);
     }
