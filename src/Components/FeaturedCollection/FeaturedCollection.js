@@ -2,6 +2,7 @@ import useProduct from "../../Hooks/useProduct";
 import Product from "../Shared/Product";
 import { ThemeContext } from "../../Contexts/ThemeContext";
 import { useContext } from "react";
+import './FeaturedCollection.css'
 
 
 const FeaturedCollection = () => {

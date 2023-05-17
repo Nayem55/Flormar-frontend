@@ -7,6 +7,7 @@ import { faCaretRight, faList } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const CategoryPage = () => {
+
   const { category } = useParams();
   const { categoryProducts } = useContext(ThemeContext);
   const [list, setList] = useState(false);

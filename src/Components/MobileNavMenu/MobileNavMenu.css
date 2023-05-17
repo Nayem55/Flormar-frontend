@@ -20,24 +20,24 @@
   }
 
   .overlay {
-      position: fixed;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.301);
-      backdrop-filter: blur(2px);
-      z-index: 999;
-      top: 0;
-      left: 0;
-      transition: all 200ms ease-in-out;
-      pointer-events: none;
-      opacity: 0;
-    }
-    .searched-overlay {
-      top: 70px;
-      opacity: 1;
-      backdrop-filter: blur(0px);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    top: 0;
+    left: 0;
+    transition: all 200ms ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .searched-overlay {
+    top: 70px;
+    opacity: 1;
+    backdrop-filter: blur(0px);
     background-color: rgba(0, 0, 0, 0.555);
-    }
+  }
 
   .overlay-active {
     top: 0 !important;
@@ -47,5 +47,4 @@
   .not-searched-overlay {
     top: 70px;
   }
-
 }

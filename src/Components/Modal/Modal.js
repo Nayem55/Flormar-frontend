@@ -73,6 +73,7 @@ const Modal = ({ product, dialogueRef, handleBlurClose }) => {
             ></FontAwesomeIcon>
             <input
               type="text"
+              disabled
               Value={quantity}
               className="border-secondary border w-[90px] my-2 text-center"
             />

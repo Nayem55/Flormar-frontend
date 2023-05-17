@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import './Signup.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCaretRight} from '@fortawesome/free-solid-svg-icons'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 
 const Signup = () => {
+    const location = useLocation();
+    const from = location.state?.from.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -16,11 +18,11 @@ const Signup = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
       const navigate = useNavigate()
 
-      useEffect(()=>{
-        if(user){
-            navigate('/')
+      useEffect(() => {
+        if (user) {
+          navigate(from, { replace: true });
         }
-      },[user])
+      }, [user]);
 
       if(loading){
         return 

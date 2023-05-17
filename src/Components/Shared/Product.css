@@ -23,28 +23,22 @@
   padding: 0 10px;
   height: 180px;
 }
-.featuredCollection .product-details {
-  padding: 0;
-}
+
 .list-container .product-details {
   text-align: left;
   position: relative;
   width: 75%;
 }
-.featuredCollection .img-container {
-  height: 50%;
-}
+
 .list-container .img-container {
   width: 20%;
   height: 100%;
 }
 
-.featuredCollection img {
-  height: 200px;
-}
+
 .img-container {
   width: 100%;
-  height: 60%;
+  height: 50%;
   position: relative;
   margin-bottom: 10px;
 }
@@ -142,13 +136,6 @@
     display: none;
   }
 
-  .featuredCollection .product-details {
-    padding: 0 ;
-  }
-
-  .featuredCollection .img-container {
-    height: 60%;
-  }
 
 
 }

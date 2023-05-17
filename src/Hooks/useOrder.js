@@ -8,6 +8,6 @@ const useOrder = () => {
       .then((data) => setOrderList(data));
   }, []);
 
-  return [orderList];
+  return [orderList,setOrderList];
 };
 export default useOrder;

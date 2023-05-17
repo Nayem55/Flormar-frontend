@@ -2,19 +2,20 @@ import { useEffect } from "react";
 import "./NavLogin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 
 const NavLogin = ({ userLogin, handleUserLogin }) => {
-  const [signInWithEmailAndPassword, loading, error] =
+  const [signIn,, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [user] = useAuthState(auth);
 
 
   if (loading) {
-    return;
+    console.log(error)
+    return 
   }
 
   const handleSignup = (e) => {
@@ -22,9 +23,8 @@ const NavLogin = ({ userLogin, handleUserLogin }) => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    signInWithEmailAndPassword(email, password);
+    signIn(email, password);
     handleUserLogin(false);
-    setTimeout(()=>window.location.reload(),2000)
   };
   return (
     <div
@@ -45,8 +45,8 @@ const NavLogin = ({ userLogin, handleUserLogin }) => {
 
 
       <div className={`w-[85%] mx-auto`}>
-        <form onSubmit={handleSignup}>
-          <div className={`mb-4 ${user?"hidden":""}`}>
+        <form className={`${user?"hidden":""}`} onSubmit={handleSignup}>
+          <div className={`mb-4 `}>
             <p className="text-[14px] font-semibold mb-2 text-[#000000d0]">Email Address</p>
             <input
               type="email"
@@ -54,7 +54,7 @@ const NavLogin = ({ userLogin, handleUserLogin }) => {
               name="email" placeholder="Email Address"
             />
           </div>
-          <div className={`mb-4 ${user?"hidden":""}`}>
+          <div className={`mb-4 `}>
             <p className="text-[14px] font-semibold mb-2 text-[#000000d0]">Password</p>
             <input
               type="password"
@@ -66,15 +66,16 @@ const NavLogin = ({ userLogin, handleUserLogin }) => {
           <input
             type="submit"
             value="LOGIN"
-            className={`${user?"hidden":""} w-full flex justify-center items-center cursor-pointer y h-[30px] text-xs font-bold nav-login-button`}
+            className={` w-full flex justify-center items-center cursor-pointer y h-[30px] text-xs font-bold nav-login-button`}
           />
-          <p className={`${user?"hidden":""} text-[14px] font-semibold my-4  text-center`}>
+          <p className={` text-[14px] font-semibold my-4  text-center`}>
             Dont have an account ?
             <Link to="/signup" onClick={()=>handleUserLogin(false)} className="text-accent mx-2 font-bold">
               Signup
             </Link>
           </p>
         </form>
+          
         <button onClick={()=>signOut(auth)} className={`${user?"":"hidden"} w-full flex justify-center items-center cursor-pointer y h-[30px] text-xs font-bold border border-secondary`}>LOGOUT</button>
       </div>
     </div>

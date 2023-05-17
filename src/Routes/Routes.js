@@ -6,7 +6,6 @@ import Signup from "../Pages/Signup/Signup";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import CartPage from "../Pages/CartPage/CartPage";
 import Shipping from "../Pages/ShippingPage/Shipping";
-import PopCart from "../Components/PopCart/PopCart";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Modal from "../Components/Modal/Modal";
@@ -21,7 +20,6 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element:<Home></Home> ,
-               
             },
             {
                 path: '/category/:category',
@@ -37,11 +35,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element:<CartPage></CartPage>
+                element:<PrivateRoute>
+                            <CartPage></CartPage>
+                        </PrivateRoute>
             },
             {
                 path: '/shipping',
-                element:<PrivateRoute><Shipping></Shipping></PrivateRoute>
+                element:<PrivateRoute>
+                    <Shipping></Shipping>
+                    </PrivateRoute>
             },
             {
                 path: '/product/:id',

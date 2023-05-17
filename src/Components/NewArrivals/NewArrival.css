@@ -3,6 +3,8 @@
     margin-top: 60px;
 }
 
+
+
 .new-arrivals::after, .featured-collections::after{
 
     content:"";

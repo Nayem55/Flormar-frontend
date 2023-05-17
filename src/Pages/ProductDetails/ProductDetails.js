@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const { cart, setCart } = useContext(ThemeContext);
 
+
   const product = products?.find((product) => product._id === id);
 
   const handleAddToCart = (item) => {
@@ -98,9 +99,9 @@ const ProductDetails = () => {
           Add to cart
         </button>
         <Link
-          to='/shipping'
+          to={quantity<2?"/shipping":"/cart"}
           onClick={() => handlePurchase(product)}
-          className="btn bg-primary hover:text-primary hover:bg-secondary text-secondary w-[90%] font-bold rounded"
+          className="btn bg-primary hover:text-primary hover:bg-secondary text-secondary w-[60%] font-bold rounded"
         >
           Buy it now
         </Link>

@@ -32,7 +32,7 @@ const PopCart = ({ popCart, handlePopCart }) => {
     <div 
       className={`pop-cart-container  lg:w-[30%] 2xl:w-[22%] ${
         popCart ? "right-20 " : "right-1000 top-900"
-      } ${scrollPosition > 80 ? "  sm:top-[64px]" : "sm:top-[160px]"}`}
+      } ${scrollPosition > 80 ? "  sm:top-[66px]" : "sm:top-[160px]"}`}
     >
       <div className="close-button absolute right-4 top-4" onClick={()=>handlePopCart(false)}>
       <FontAwesomeIcon  icon={faXmark} className="inline mr-2 text-md " />
@@ -70,15 +70,12 @@ const PopCart = ({ popCart, handlePopCart }) => {
           <p>Total:</p>
           <p>${price}</p>
         </div>
-        <Link className="add-btn hidden sm:block " to="/shipping">
-          CHECKOUT NOW
-        </Link>
         <Link
           className="view-cart hidden"
           to={"/cart"}
           onClick={() => handlePopCart(false)}
         >
-          OR VIEW CART
+          VIEW CART
         </Link>
       </div>
 
@@ -87,10 +84,6 @@ const PopCart = ({ popCart, handlePopCart }) => {
           <p>Total:</p>
           <p>${price}</p>
         </div>
-
-        <Link onClick={() => handlePopCart(false)} className="add-btn mobile-checkout" to="/shipping">
-          CHECKOUT NOW
-        </Link>
         <Link
           className="view-cart"
           to={"/cart"}
