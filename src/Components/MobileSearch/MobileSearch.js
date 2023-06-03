@@ -21,7 +21,7 @@ const MobileSearch = ({showSearch,handleSearch}) => {
         product.name.toLowerCase().includes(searchText?.toLowerCase())
       );
        highPriorityProducts = searchedProducts?.filter(
-        (product) => product?.priority.toLowerCase() === "high"
+        (product) => product?.tags[0]?.name.toLowerCase() === "high"
       );
     }
     return (

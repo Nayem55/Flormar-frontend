@@ -17,17 +17,17 @@ const Modal = ({ product, dialogueRef, handleBlurClose }) => {
 
   const handleAddToCart = (item) => {
     let newCart = [];
-    const exists = cart.find((product) => product?._id == item._id);
+    const exists = cart.find((product) => product?.id == item.id);
     if (!exists) {
       item.quantity = quantity;
       newCart = [...cart, item];
     } else {
       item.quantity = exists.quantity + quantity;
-      const rest = cart.filter((product) => product?._id !== item._id);
+      const rest = cart.filter((product) => product?.id !== item.id);
       newCart = [...rest, item];
     }
     setCart(newCart);
-    addToDb(item._id, quantity);
+    addToDb(item.id, quantity);
 
     toast.success("ADDED TO CART");
   };
@@ -40,7 +40,7 @@ const Modal = ({ product, dialogueRef, handleBlurClose }) => {
           icon={faXmark} onClick={handleBlurClose}
         ></FontAwesomeIcon>
         <div className="w-[50%]">
-          <img className=" modal-img" src={product?.img} alt="" />
+          <img className=" modal-img" src={product?.images[0].src} alt="" />
         </div>
 
         <div className="w-[50%] py-10 text-left">
@@ -53,12 +53,12 @@ const Modal = ({ product, dialogueRef, handleBlurClose }) => {
             <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
           </div>
           <p className="text-sm text-secondary text-opacity-70">
-            {product?.brand?.toUpperCase()}
+            {product?.categories[0].name?.toUpperCase()}
           </p>
           <p>Availablity : In Stock</p>
           <p>Product Type : {product?.productType?.toUpperCase()}</p>
           <p className="my-10 text-secondary text-opacity-70">
-            {product?.description}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, soluta? Vero, ullam? Autem, ea unde libero voluptatibus fugiat commodi suscipit quasi corrupti totam pariatur eum animi aliquam laboriosam in nisi!
           </p>
           <p className="text-accent text-3xl font-bold my-8">
             {" "}

@@ -13,13 +13,16 @@ const CartModalProduct = ({ product, index, quantity }) => {
   const handleChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      const newProduct = products.find((product) => product._id === value);
+      const newProduct = products.find((product) => product?.id == value);
+      newProduct.price = 0;
+      newProduct.quantity = 1;
       setFreeProduct([...freeProduct, newProduct]);
     } else {
-      const rest = freeProduct.filter((product) => product._id !== value);
+      const rest = freeProduct.filter((product) => product?.id != value);
       setFreeProduct(rest);
     }
   };
+
 
   return (
     <div
@@ -35,14 +38,14 @@ const CartModalProduct = ({ product, index, quantity }) => {
         <input
           onChange={handleChange}
           id={`check-${index}`}
-          value={product?._id}
+          value={product?.id}
           type="checkbox"
           onClick={() => setChcecked(!checked)}
           className="cursor-pointer"
         />
 
         <label htmlFor={`check-${index}`} className="cartModalProduct">
-          <img src={product.img} alt="" />
+          <img src={product.images[0].src} alt="" />
           <div className="cartModalProductDetails">
             <p>{product.name}</p>
             <p>

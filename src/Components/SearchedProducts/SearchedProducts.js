@@ -23,10 +23,10 @@ const SearchedProducts = ({ searchedProducts, highPriorityProducts, focus, handl
       <div className="searchedProduct cursor-pointer">
         {searchedArray.slice(0, 3)?.map((product) => (
           <div onClick={()=>{
-            navigate(`/product/${product._id}`)
-            handleSearch(false)
+            navigate(`/product/${product.id}`)
+            window.innerWidth < 640 && handleSearch(false)
             }} className="flex flex-col items-center">
-            <img src={product.img} alt="" />
+            <img src={product.images[0].src} alt="" />
             <div className="searchedProductDetails">
               <p title={product.name}>{product.name.length<40?product.name:product.name.slice(0,40)+"....."}</p>
               <p className="text-accent font-bold">${product.price}</p>
@@ -42,7 +42,7 @@ const SearchedProducts = ({ searchedProducts, highPriorityProducts, focus, handl
           setCategory('searchProduct')
           localStorage.setItem('category','searchProduct')
         }} to='/category/search results'>
-          <p onClick={()=>handleSearch(false)} className="text-center text-secondary text-opacity-50 mt-2 text-xs font-bold hover:text-accent pointer">
+          <p onClick={()=>window.innerWidth < 640 && handleSearch(false)} className="text-center text-secondary text-opacity-50 mt-2 text-xs font-bold hover:text-accent pointer">
             SEE ALL RESULTS ( {searchedProducts.length} )
           </p>
         </Link>

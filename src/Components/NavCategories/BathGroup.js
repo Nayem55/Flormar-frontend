@@ -21,8 +21,8 @@ const BathGroup = () => {
       <Link
         to={`/category/Body & bath`}
         onClick={() => {
-          setCategory("body & bath");
-          localStorage.setItem("category", "body & bath");
+          setCategory("bath");
+          localStorage.setItem("category", "bath");
         }}
         className="mr-10 hover:text-accent font-bold "
       >
@@ -42,8 +42,8 @@ const BathGroup = () => {
         <hr className=" w-full text-white mb-2" />
         <Link
           onClick={() => {
-            setCategory("body");
-            localStorage.setItem("category", "body");
+            setCategory("bath");
+            localStorage.setItem("category", "bath");
             setProductType("body lotion");
             localStorage.setItem("productType", "body lotion");
           }}
@@ -56,8 +56,8 @@ const BathGroup = () => {
         <hr className=" w-full text-white my-2" />
         <Link
           onClick={() => {
-            setCategory("body");
-            localStorage.setItem("category", "body");
+            setCategory("bath");
+            localStorage.setItem("category", "bath");
             setProductType("Conditioner");
             localStorage.setItem("productType", "Conditioner");
           }}
@@ -70,8 +70,8 @@ const BathGroup = () => {
         <hr className=" w-full text-white my-2" />
         <Link
           onClick={() => {
-            setCategory("body");
-            localStorage.setItem("category", "body");
+            setCategory("bath");
+            localStorage.setItem("category", "bath");
             setProductType("face wash");
             localStorage.setItem("productType", "face wash");
           }}
@@ -84,8 +84,8 @@ const BathGroup = () => {
         <hr className=" w-full text-white my-2" />
         <Link
           onClick={() => {
-            setCategory("body");
-            localStorage.setItem("category", "body");
+            setCategory("bath");
+            localStorage.setItem("category", "bath");
             setProductType("hair oil");
             localStorage.setItem("productType", "hair oil");
           }}
@@ -98,8 +98,8 @@ const BathGroup = () => {
         <hr className=" w-full text-white my-2" />
         <Link
           onClick={() => {
-            setCategory("body");
-            localStorage.setItem("category", "body");
+            setCategory("bath");
+            localStorage.setItem("category", "bath");
             setProductType("shampoo");
             localStorage.setItem("productType", "shampoo");
           }}
@@ -112,8 +112,8 @@ const BathGroup = () => {
         <hr className=" w-full text-white my-2" />
         <Link
           onClick={() => {
-            setCategory("body");
-            localStorage.setItem("category", "body");
+            setCategory("bath");
+            localStorage.setItem("category", "bath");
             setProductType("shower gel");
             localStorage.setItem("productType", "shower gel");
           }}

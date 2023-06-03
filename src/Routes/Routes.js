@@ -10,54 +10,54 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Modal from "../Components/Modal/Modal";
 
-
-
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Main></Main>, 
-        children: [
-            {
-                path: '/',
-                element:<Home></Home> ,
-            },
-            {
-                path: '/category/:category',
-                element:<CategoryPage></CategoryPage>,
-            },
-            {
-                path: '/login',
-                element:<Login></Login>
-            },
-            {
-                path: '/signup',
-                element:<Signup></Signup>
-            },
-            {
-                path: '/cart',
-                element:<PrivateRoute>
-                            <CartPage></CartPage>
-                        </PrivateRoute>
-            },
-            {
-                path: '/shipping',
-                element:<PrivateRoute>
-                    <Shipping></Shipping>
-                    </PrivateRoute>
-            },
-            {
-                path: '/product/:id',
-                element:<ProductDetails/>
-            },
-            {
-                path: '/modal/:modalId',
-                element:<Modal/>
-            },
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/category/:category",
+        element: <CategoryPage></CategoryPage>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>,
+      },
+      {
+        path: "/cart",
+        element: (
+          <PrivateRoute>
+            <CartPage></CartPage>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/shipping",
+        element: (
+          <PrivateRoute>
+            <Shipping></Shipping>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetails />,
+      },
+      {
+        path: "/modal/:modalId",
+        element: <Modal />,
+      },
+    ],
+  }
 
-           
-        ]
-    },
-
-])
+]);
 
 export default router;

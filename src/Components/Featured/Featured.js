@@ -82,8 +82,8 @@ const Featured = () => {
 
         <Link className="cursor-pointer" to={`/category/Body & bath`}
             onClick={() => {
-            setCategory("body & bath");
-            localStorage.setItem("category", "body & bath");
+            setCategory("bath");
+            localStorage.setItem("category", "bath");
            }}>
 
            <img 

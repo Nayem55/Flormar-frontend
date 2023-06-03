@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useOrder = () => {
   const [orderList, setOrderList] = useState();
   useEffect(() => {
-    fetch("https://fragrance-backend.vercel.app/order")
+    fetch("http://localhost:5000/getOrder")
       .then((res) => res.json())
       .then((data) => setOrderList(data));
   }, []);

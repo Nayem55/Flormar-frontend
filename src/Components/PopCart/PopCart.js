@@ -20,33 +20,37 @@ const PopCart = ({ popCart, handlePopCart }) => {
   });
 
   const handleDelete = (id) => {
-    const rest = cart.filter((product) => product._id !== id);
+    const rest = cart.filter((product) => product.id !== id);
     setCart(rest);
     removeFromDb(id);
   };
 
-
-  
-
   return (
-    <div 
+    <div
       className={`pop-cart-container  lg:w-[30%] 2xl:w-[22%] ${
         popCart ? "right-20 " : "right-1000 top-900"
       } ${scrollPosition > 80 ? "  sm:top-[66px]" : "sm:top-[160px]"}`}
     >
-      <div className="close-button absolute right-4 top-4" onClick={()=>handlePopCart(false)}>
-      <FontAwesomeIcon  icon={faXmark} className="inline mr-2 text-md " />
-      <p className="inline text-md">Close</p>
+      <div
+        className="close-button absolute right-4 top-4"
+        onClick={() => handlePopCart(false)}
+      >
+        <FontAwesomeIcon icon={faXmark} className="inline mr-2 text-md " />
+        <p className="inline text-md">Close</p>
       </div>
       <h2 className={"mt-10 ml-4 pb-4 my-cart sm:hidden"}>MY CART:</h2>
       <div className="pop-cart-products pr-4 max-h-[550px] overflow-y-scroll">
         {cart?.map((product) => (
           <div
-            key={product._id}
+            key={product.id}
             className="pop-product mb-4 gap-4 flex h-[30%] items-center"
           >
             <div className="pop-img w-[20%] h-[70px]">
-              <img src={product.img} className="w-full h-full" alt="" />
+              <img
+                src={product.images[0].src}
+                className="w-full h-full"
+                alt=""
+              />
             </div>
             <div className="pop-details 2xl:w-[65%] md:w-[75%] mr-2">
               <h3 className="">{product.name}</h3>
@@ -57,7 +61,7 @@ const PopCart = ({ popCart, handlePopCart }) => {
             <FontAwesomeIcon
               className="text-secondary hover:text-accent cursor-pointer"
               onClick={() => {
-                handleDelete(product._id);
+                handleDelete(product.id);
               }}
               icon={faTrash}
             ></FontAwesomeIcon>

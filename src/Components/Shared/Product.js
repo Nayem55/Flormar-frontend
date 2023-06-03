@@ -15,17 +15,17 @@ const Product = ({ product, list }) => {
   
   const handleAddToCart = (item) => {
     let newCart = [];
-    const exists = cart.find((product) => product._id == item._id);
+    const exists = cart.find((product) => product.id == item.id);
     if (!exists) {
       item.quantity = 1;
       newCart = [...cart, item];
     } else {
       item.quantity = exists.quantity + 1;
-      const rest = cart.filter((product) => product._id !== item._id);
+      const rest = cart.filter((product) => product.id != item.id);
       newCart = [...rest, item];
     }
     setCart(newCart);
-    addToDb(item._id);
+    addToDb(item.id);
 
     toast.success("ADDED TO CART");
   };
@@ -44,10 +44,10 @@ const Product = ({ product, list }) => {
     <div className="product">
       <div className="img-container cursor-pointer">
         <div
-          onClick={() => navigate(`/product/${product._id}`)}
+          onClick={() => navigate(`/product/${product.id}`)}
           className="img-div"
         >
-          <img src={product?.img} alt="" />
+          <img src={product?.images[0].src} alt="" />
         </div>
         {/* The button to open modal */}
         <button  className="details-btn" onClick={handleModal} >
@@ -59,7 +59,7 @@ const Product = ({ product, list }) => {
         </button>
       </div>
       <div className="product-details">
-        <p className="opacity-[70%]">{product?.brand.toUpperCase()}</p>
+        <p className="opacity-[70%]">{product?.categories[0].name.toUpperCase()}</p>
         <p>{product?.name}</p>
         <div className="text-[#f3c621]">
           <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
@@ -68,7 +68,7 @@ const Product = ({ product, list }) => {
           <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
           <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
         </div>
-        <p>{list ? product?.description : ""}</p>
+        <p>{list ? <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facere magnam accusantium ad ea nulla laborum quos repudiandae dolores tempore.</p> : ""}</p>
         <p className="text-accent font-bold">{product?.price} TK.</p>
         <button
           onClick={() => handleAddToCart(product)}

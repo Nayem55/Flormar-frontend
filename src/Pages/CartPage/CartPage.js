@@ -8,17 +8,16 @@ import CartProduct from "../../Components/CartProduct/CartProduct";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import CartModal from "../../Components/CartModal/CartModal";
+import { ThreeDots } from "react-loader-spinner";
 
 const CartPage = () => {
   const { cart } = useContext(ThemeContext);
-  const {orderList} = useContext(ThemeContext);
   const [user] = useAuthState(auth);
+  const {orderList} = useContext(ThemeContext)
   const [newCustomer,setNewCustomer] = useState(false);
   const cartModalRef=useRef();
-
-
-
-  const previousCustomer = orderList?.find(list=>list?.email === user?.email)
+  const {loading} = useContext(ThemeContext)
+  const previousCustomer = orderList?.find(list=>list?.billing.email === user?.email)
 
   useEffect(() => {
     if(previousCustomer){
@@ -76,7 +75,19 @@ const CartPage = () => {
             <p className="w-[85%]">Products</p>
             <p className="w-[15%]">Quantity</p>
           </div>
-          {cart?.map((product) => (
+          {loading?  <div className="flex justify-center items-center ">
+          <ThreeDots
+            height="90"
+            width="90"
+            radius="9"
+            color="#cb9815"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          />
+        </div>:
+            cart?.map((product) => (
             <CartProduct product={product}></CartProduct>
           ))}
         </div>
@@ -105,7 +116,7 @@ const CartPage = () => {
             }
             
         </div> 
-        <CartModal  handleModalClose={handleModalClose} cartModalRef={cartModalRef}></CartModal>
+        <CartModal handleModalClose={handleModalClose} cartModalRef={cartModalRef}></CartModal>
 
       </div>
     </div>

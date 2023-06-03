@@ -11,11 +11,11 @@ const CartModal = ({ handleModalClose, cartModalRef }) => {
   const { products } = useContext(ThemeContext);
   const { freeProduct, setFreeProduct } = useContext(ThemeContext);
 
-  let minPrice = cart[0]?.price;
+  let minPrice = parseInt(cart[0]?.price);
 
   cart?.forEach((product) => {
-    if (minPrice >= product?.price) {
-      minPrice = product?.price;
+    if (minPrice >= parseInt(product?.price)) {
+      minPrice = parseInt(product?.price);
     }
   });
 
@@ -29,7 +29,6 @@ const CartModal = ({ handleModalClose, cartModalRef }) => {
     quantity = quantity + product.quantity;
   });
 
-  console.log(freeProductList)
   return (
     <dialog ref={cartModalRef} className="cart-dialogue relative sm:w-[50%] 2xl:w-[40%]">
       <div className="sticky top-0 py-4 w-full flex justify-between bg-primary z-[90000]">

@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../../Images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquarePhoneFlip, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightToBracket, faSquarePhoneFlip, faTableColumns, faUser } from "@fortawesome/free-solid-svg-icons";
 import useScroll from "../../../Hooks/useScroll";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -31,7 +31,7 @@ const Navbar = ({ popCart,handlePopCart }) => {
       product.name.toLowerCase().includes(searchText?.toLowerCase())
     );
      highPriorityProducts = searchedProducts?.filter(
-      (product) => product?.priority.toLowerCase() === "high"
+      (product) => product?.tags[0]?.name?.toLowerCase() === "high priority"
     );
   }
 

@@ -14,10 +14,8 @@ const CartProduct = ({ product }) => {
   const quantityRef = useRef();
 
   const handleUpdate = (id) => {
-
-   const storedCart = getStoredCart();
-   const quantity= parseInt(quantityRef.current.innerText);
-
+    const storedCart = getStoredCart();
+    const quantity = parseInt(quantityRef.current.innerText);
 
     if (storedCart[id]) {
       storedCart[id] = quantity;
@@ -26,7 +24,7 @@ const CartProduct = ({ product }) => {
     //!setting Cart Data to UI
     setCart(
       cart.map((pd) => {
-        if (pd._id === product._id) {
+        if (pd.id === product.id) {
           pd.quantity = quantity;
           return pd;
         } else return pd;
@@ -37,9 +35,8 @@ const CartProduct = ({ product }) => {
     localStorage.setItem("shopping-cart", JSON.stringify(storedCart));
   };
 
-
   const handleDelete = (id) => {
-    const rest = cart.filter((product) => product._id !== id);
+    const rest = cart.filter((product) => product.id !== id);
     setCart(rest);
     removeFromDb(id);
     console.log(id);
@@ -50,11 +47,11 @@ const CartProduct = ({ product }) => {
       <div className="flex w-[70%] sm:w-[80%]">
         <div className="cart-product-container">
           <div className="cart-img-container ">
-            <img className="" src={product?.img} alt="" />
+            <img className="" src={product?.images[0].src} alt="" />
           </div>
           <div className="cart-product-details]">
             <p className="opacity-70">{product?.name}</p>
-            <p>{product?.brand.toUpperCase()}</p>
+            <p>{product?.categories[0].name.toUpperCase()}</p>
             <p className="text-accent font-bold">${product?.price}</p>
           </div>
         </div>
@@ -101,7 +98,7 @@ const CartProduct = ({ product }) => {
 
           <button
             onClick={() => {
-              handleDelete(product._id);
+              handleDelete(product.id);
               quantityRef.current.innerText = product.quantity;
             }}
           >
@@ -113,7 +110,7 @@ const CartProduct = ({ product }) => {
         </div>
         <button
           onClick={() => {
-            handleUpdate(product._id);
+            handleUpdate(product.id);
           }}
           className="text-xs flex justify-start hover:text-accent  font-bold mt-4"
         >

@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 
 const useProduct = () => {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://fragrance-backend.vercel.app/products")
+    fetch("http://localhost:5000/getProducts")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data)
+        setLoading(false)
+      });
   }, []);
-
-  return [products];
+  return [products,loading];
 };
 export default useProduct;

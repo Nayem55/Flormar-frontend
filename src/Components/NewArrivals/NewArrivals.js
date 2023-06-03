@@ -6,7 +6,7 @@ import './NewArrival.css'
 const NewArrivals = () => {
   const { products } = useContext(ThemeContext);
   const newArrivals = products
-    ?.filter((product) => product.category.toLowerCase() === "perfume")
+    ?.filter((product) => product.categories[0].name.toLowerCase() === "armaf")
     .slice(29, 37);
 
   return (

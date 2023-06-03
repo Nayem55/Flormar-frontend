@@ -5,9 +5,9 @@ const ShippingFreeProduct = ({product}) => {
         <div className="cartModalProductContainer">
 
         <div className="cartModalProduct">
-          <img src={product.img} alt="" />
+          <img src={product?.images[0].src} alt="" />
           <div className="cartModalProductDetails">
-            <p>{product.name}</p>
+            <p>{product?.name}</p>
             <p>
               price : <span className='text-accent font-bold'>Free</span>
             </p>

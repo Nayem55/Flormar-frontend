@@ -26,7 +26,7 @@ const SpecialProducts = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Link to="/product/645e7d603374d6ab95450090">
+          <Link to="/product/132">
             <img
               src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Vanity_Femme_Essence_100mnl_W_1c_350x.jpg?v=1635150142"
               alt=""
@@ -34,7 +34,7 @@ const SpecialProducts = () => {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to="/product/645e7d603374d6ab95450062" >
+          <Link to="/product/340" >
             <img
               src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Tres_Nuit_M_1c_350x.jpg?v=1635150382"
               alt=""
@@ -42,7 +42,7 @@ const SpecialProducts = () => {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link to="/product/645e7d603374d6ab95450069">
+          <Link to="/product/176">
             <img
               src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Sillage_105ml_-_5_350x.jpg?v=1635150103"
               alt=""
