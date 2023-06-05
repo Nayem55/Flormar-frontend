@@ -45,7 +45,7 @@ const CartModalProduct = ({ product, index, quantity }) => {
         />
 
         <label htmlFor={`check-${index}`} className="cartModalProduct">
-          <img src={product.images[0].src} alt="" />
+          <img src={product?.images[0]?.src} alt="" />
           <div className="cartModalProductDetails">
             <p>{product.name}</p>
             <p>

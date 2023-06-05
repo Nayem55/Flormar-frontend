@@ -13,12 +13,7 @@ const Featured = () => {
   return (
     <div className="featured">
  
-        <Link onClick={() => {
-            setCategory("perfumeMen");
-            localStorage.setItem("category", "perfumeMen");
-          }}
-          to="/category/Fragrance for men">
-          
+        <Link>
           <img
             className=""
             src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Armaf-Category-Banner-2_1_1024x1024_crop_center.jpg?v=1664175316"
@@ -26,11 +21,7 @@ const Featured = () => {
           />
         </Link>
 
-        <Link onClick={() => {
-            setCategory("perfumeWomen");
-            localStorage.setItem("category", "perfumeWomen");
-          }}
-          to="/category/fragrance for women">
+        <Link>
           <img
             className=""
             src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Armaf-Category-Banner-1_1024x1024_crop_center.jpg?v=1664175317"
@@ -38,11 +29,7 @@ const Featured = () => {
           />
         </Link>
 
-        <Link onClick={() => {
-          setCategory("perfume");
-          localStorage.setItem("category", "perfume");
-        }}
-        to={`/category/classic collection`}>
+        <Link>
 
           <img
             className="w-[400px]"
@@ -52,11 +39,7 @@ const Featured = () => {
 
         </Link>
 
-        <Link to={`/category/New collection`}
-          onClick={() => {
-          setCategory("online exclusive");
-          localStorage.setItem("category", "online exclusive");
-          }}>
+        <Link>
           <img
             className="w-[400px]"
             src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Armaf-Category-Banner-4_1_1024x1024_crop_center.jpg?v=1664175316"
@@ -64,39 +47,6 @@ const Featured = () => {
           />
 
         </Link>
-
-        <Link onClick={()=>{
-              setCategory("brand")
-              localStorage.setItem('category','brand')
-              setBrand("flavia")
-              localStorage.setItem('brand','flavia')
-            }}
-            to="/category/flavia">
-             
-          <img
-            className="w-[400px]"
-            src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/armaf_resize_1024x1024_crop_center.jpg?v=1664191126"
-            alt=""
-          />
-        </Link>
-
-        <Link className="cursor-pointer" to={`/category/Body & bath`}
-            onClick={() => {
-            setCategory("bath");
-            localStorage.setItem("category", "bath");
-           }}>
-
-           <img 
-            src="https://cdn.shopify.com/s/files/1/0559/7921/2972/files/Armaf-Category-Banner-6_1_1024x1024_crop_center.jpg?v=1664175316"
-            alt=""
-            />
-
-        </Link>
-
-        
-
-      
-
          
     </div>
   );

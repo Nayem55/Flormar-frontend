@@ -6,8 +6,7 @@ import './NewArrival.css'
 const NewArrivals = () => {
   const { products } = useContext(ThemeContext);
   const newArrivals = products
-    ?.filter((product) => product.categories[0].name.toLowerCase() === "armaf")
-    .slice(29, 37);
+    ?.filter((product) => product.tags[0]?.name.toLowerCase() === "new arrival");
 
   return (
     <div className="new-arrivals">

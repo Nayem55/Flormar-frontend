@@ -40,7 +40,7 @@ const Modal = ({ product, dialogueRef, handleBlurClose }) => {
           icon={faXmark} onClick={handleBlurClose}
         ></FontAwesomeIcon>
         <div className="w-[50%]">
-          <img className=" modal-img" src={product?.images[0].src} alt="" />
+          <img className=" modal-img" src={product?.images[0]?.src} alt="" />
         </div>
 
         <div className="w-[50%] py-10 text-left">

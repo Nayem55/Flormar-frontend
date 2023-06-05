@@ -9,6 +9,7 @@ import useCart from "./Hooks/useCart";
 import useOrder from "./Hooks/useOrder";
 import useScroll from "./Hooks/useScroll";
 import useCustomer from "./Hooks/useCustomer";
+import useShippingInfo from "./Hooks/useShippingInfo";
 
 function App() {
   const [products, loading] = useProduct();
@@ -21,6 +22,7 @@ function App() {
   const [customerList] = useCustomer();
   const [scrollPosition] = useScroll();
   const [freeProduct, setFreeProduct] = useState([]);
+  const [shippingInDhaka,,shippingOutDhaka] = useShippingInfo();
 
   useEffect(() => {
     const initialCategory = localStorage.getItem("category");
@@ -31,105 +33,13 @@ function App() {
     setProductType(initialProductType);
   }, []);
   let categoryProducts = [];
-  if (category === "all") {
-    categoryProducts = products;
-  } else if (category === "purePerfumeOil") {
+  
     categoryProducts = products?.filter(
       (product) =>
-        (product?.categories[1].name.toLowerCase().includes("perfume") || product?.categories[2].name.toLowerCase().includes("perfume") )&&
-        product?.name.toLowerCase().includes(" oil ")
-    );
-  } else if (category === "perfumeMen") {
-    categoryProducts = products?.filter(
-      (product) =>
-      (product?.categories[1].name.toLowerCase().includes("perfume") || product?.categories[2].name.toLowerCase().includes("perfume") ) &&
-      (product?.categories[1].name.toLowerCase().includes("men") || product?.categories[2].name.toLowerCase().includes("men") )
-    );
-  } else if (category === "perfumeWomen") {
-    categoryProducts = products?.filter(
-      (product) =>
-      (product?.categories[1].name.toLowerCase().includes("perfume") || product?.categories[2].name.toLowerCase().includes("perfume") ) &&
-      (product?.categories[1].name.toLowerCase().includes("women") || product?.categories[2].name.toLowerCase().includes("women") )
-    );
-  } else if (category === "deoWomen") {
-    categoryProducts = products?.filter(
-      (product) =>
-      (product?.categories[1].name.toLowerCase().includes("deodorant") || product?.categories[2].name.toLowerCase().includes("deodorant") ) &&
-      (product?.categories[1].name.toLowerCase().includes("women") || product?.categories[2].name.toLowerCase().includes("women") )
-    );
-  } else if (category === "deoMen") {
-    categoryProducts = products?.filter(
-      (product) =>
-      (product?.categories[1].name.toLowerCase().includes("deodorant") || product?.categories[2].name.toLowerCase().includes("deodorant") ) &&
-      (product?.categories[1].name.toLowerCase().includes("men") || product?.categories[2].name.toLowerCase().includes("men") )
-    );
-  } else if (category === "perfumeBrand") {
-    categoryProducts = products?.filter(
-      (product) =>
-      (product?.categories[1].name.toLowerCase().includes("perfume") || product?.categories[2].name.toLowerCase().includes("perfume")) &&
-       product.categories[0].name.toLowerCase() === brand
-    );
-  } else if (category === "deoBrand") {
-    categoryProducts = products?.filter(
-      (product) =>
-      (product?.categories[1].name.toLowerCase().includes("deodorant") || product?.categories[2].name.toLowerCase().includes("deodorant")) &&
-        product.categories[0].name.toLowerCase() === brand
-    );
-  } else if (category === "bath") {
-    categoryProducts = products?.filter(
-      (product) =>
-        product?.name.toLowerCase().includes(productType.toLowerCase()) 
-    );
-  } else if (category === "brand") {
-    categoryProducts = products?.filter(
-      (product) => product?.categories[0].name.toLowerCase().includes(brand?.toLowerCase())
-    );
-  } else if (category === "bestsellerAll") {
-    const perfume = products
-      ?.filter(
-        (product) =>
-          product?.categories[1].name.toLowerCase() === "perfume" ||
-          product?.categories[2].name.toLowerCase() === "perfume"
-      )
-      .slice(0, 10);
-    const deodorant = products
-      ?.filter(
-        (product) =>
-          product?.categories[1].name.toLowerCase() === "deodorant" ||
-          product?.categories[2].name.toLowerCase() === "deodorant"
-      )
-      .slice(0, 10);
-    const mist = products
-      ?.filter(
-        (product) =>
-          product?.categories[1].name.toLowerCase() === "mist" ||
-          product?.categories[2].name.toLowerCase() === "mist"
-      )
-      .slice(0, 10);
-    if (perfume && deodorant && mist) {
-      categoryProducts = [...perfume, ...deodorant, ...mist];
-    }
-  } else if (category === "bestseller") {
-    categoryProducts = products
-      ?.filter(
-        (product) => product?.categories[1].name.toLowerCase().includes(brand?.toLowerCase()) || product?.categories[2].name.toLowerCase().includes(brand?.toLowerCase())
-      )
-      .slice(0, 10);
-  } else if (category === "searchProduct") {
-    categoryProducts = products?.filter((product) =>
-      product?.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-  } else {
-    categoryProducts = products?.filter(
-      (product) =>
-        product?.categories[1].name
+        product?.categories[0].name
           .toLowerCase()
-          .includes(category?.toLowerCase()) ||
-        product?.categories[2].name
-          .toLowerCase()
-          .includes(category?.toLowerCase())
+          .includes(category?.toLowerCase()) 
     );
-  }
 
   const goToTop = () => {
     window.scrollTo(0, 0);
@@ -152,7 +62,9 @@ function App() {
         setSearchText,
         freeProduct,
         setFreeProduct,
-        customerList
+        customerList,
+        shippingInDhaka,
+        shippingOutDhaka
       }}
     >
       <RouterProvider router={router}></RouterProvider>

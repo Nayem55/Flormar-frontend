@@ -30,7 +30,7 @@ const CartModal = ({ handleModalClose, cartModalRef }) => {
   });
 
   return (
-    <dialog ref={cartModalRef} className="cart-dialogue relative sm:w-[50%] 2xl:w-[40%]">
+    <dialog ref={cartModalRef} className="cart-dialogue relative lg:w-[50%] 2xl:w-[40%]">
       <div className="sticky top-0 py-4 w-full flex justify-between bg-primary z-[90000]">
         
       <p className="text-center font-bold my-2 ">Choose Free Products ({freeProduct.length}/{quantity===2?1:2})</p>
@@ -53,12 +53,12 @@ const CartModal = ({ handleModalClose, cartModalRef }) => {
         </div>
     
 
-      <div className={`sticky bottom-0 bg-primary py-3`}>
+      <div className={`sticky bottom-0 bg-primary py-3 `}>
 
       <Link
         to="/shipping"
         onClick={handleModalClose}
-        className="btn  bg-secondary w-[80%] sm:w-[30%]  mx-auto flex justify-center mt-[15px] text-white hover:bg-secondary border-none rounded"
+        className="btn bg-secondary w-[80%] lg:w-[30%] mx-auto flex justify-center mt-[15px] text-white hover:bg-secondary border-none rounded"
         >
         Proceed Checkout
       </Link>

@@ -9,6 +9,7 @@ import Shipping from "../Pages/ShippingPage/Shipping";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Modal from "../Components/Modal/Modal";
+import Confirmation from "../Pages/ConfirmationPgae/Confirmation";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,12 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Shipping></Shipping>
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "shipping/confirmOrder",
+        element: (
+            <Confirmation></Confirmation>
         ),
       },
       {

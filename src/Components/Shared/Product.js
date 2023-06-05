@@ -47,7 +47,7 @@ const Product = ({ product, list }) => {
           onClick={() => navigate(`/product/${product.id}`)}
           className="img-div"
         >
-          <img src={product?.images[0].src} alt="" />
+          <img src={product?.images[0]?.src} alt="" />
         </div>
         {/* The button to open modal */}
         <button  className="details-btn" onClick={handleModal} >

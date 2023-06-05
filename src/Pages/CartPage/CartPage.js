@@ -29,13 +29,13 @@ const CartPage = () => {
 
   const handleModalOpen=() => {
     cartModalRef.current.showModal()
-    document.documentElement.style.overflowY='hidden'
+    // document.documentElement.style.overflowY='hidden'
 
   }
 
   const handleModalClose=()=>{
     cartModalRef.current.close()
-    document.documentElement.style.overflowY='visible'
+    // document.documentElement.style.overflowY='visible'
 
   }
 
@@ -61,7 +61,7 @@ const CartPage = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-between">
           <p className="text-xl my-4 font-bold">My Cart</p>
-          {newCustomer ? <p>Get <span className="text-2xl font-bold text-accent">10%</span> Discount On First Purchase</p>:""}
+          {/* {newCustomer ? <p>Get <span className="text-2xl font-bold text-accent">10%</span> Discount On First Purchase</p>:""} */}
           <Link to="/" className="flex items-center">
             <p className="mr-2">Continue Shopping</p>
             <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
@@ -97,10 +97,9 @@ const CartPage = () => {
             <div className="flex items-center gap-4">
             <p className="text-3xl my-6 text-accent font-bold">$
               {
-                newCustomer? Math.floor(( price - price*0.1)) : price
+                price
               }
             </p>
-            {newCustomer?<s className="text-secondary text-opacity-70"><p className="text-xl text-secondary text-opacity-80">${price}</p></s>:""}
             </div>
             <hr className="h-[2px] bg-secondary bg-opacity-20 w-full" />
             <label htmlFor="comments" className="text-left w-full my-3 text-xs"> Additional Comments</label>

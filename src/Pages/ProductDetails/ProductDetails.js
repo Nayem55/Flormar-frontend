@@ -45,8 +45,8 @@ const ProductDetails = () => {
 
   return (
     <div className="flex flex-col sm:flex-row 2xl:w-[65%] md:w-[75%] mx-auto">
-      <div className=" flex items-center w-[100%] sm:w-[50%]">
-        <img src={product?.images[0].src} alt="" />
+      <div className=" flex items-center w-[100%] sm:w-[100%] overflow-hidden">
+        <img className="h-full details-img pr-10" src={product?.images[0].src} alt="" />
       </div>
 
       <div className="w-[100%] mx-auto px-10 sm:px-0 py-10">

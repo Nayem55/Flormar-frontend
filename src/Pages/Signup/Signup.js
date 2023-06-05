@@ -41,6 +41,7 @@ const Signup = () => {
         const password = e.target.password.value;
         const data = {
           email: email,
+          password:password,
           first_name: firstName,
           last_name: lastName,
           username: name,

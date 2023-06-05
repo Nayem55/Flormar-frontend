@@ -43,17 +43,14 @@ const LargeCategory = ({setProductType,setBrand,popCart,handlePopCart,setCategor
             className="mr-10 hover:text-accent font-bold"
             to={`/category/Body Mist`}
             onClick={() => {
-              setCategory("mist");
-              localStorage.setItem("category", "mist");
+              setCategory("BODY SPRAY");
+              localStorage.setItem("category", "BODY SPRAY");
             }}
           >
             BODY MIST
           </Link>
 
           <DeoGroup />
-          <BathGroup />
-          <BrandsGroup />
-          <BestSeller />
 
           {/*----------------- Gift Set  --------------------*/}
           <Link
@@ -65,18 +62,6 @@ const LargeCategory = ({setProductType,setBrand,popCart,handlePopCart,setCategor
             }}
           >
             GIFT SET
-          </Link>
-
-          {/*-------------- Online Exclusive  ----------------*/}
-          <Link
-            to={`/category/Online Exclusive`}
-            onClick={() => {
-              setCategory("online exclusive");
-              localStorage.setItem("category", "online exclusive");
-            }}
-            className="hover:text-accent font-bold"
-          >
-            ONLINE EXCLUSIVE
           </Link>
         </div>
       </div>
